@@ -1,0 +1,57 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    group = 'com.chaokunyang.shop'
+    version = '0.1'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'spring-boot'
+    sourceCompatibility = 1.8 // 必须在apply java插件之后
+    targetCompatibility = 1.8
+    repositories {
+        mavenCentral()
+    }
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+        }
+    }
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-test'
+        compile 'org.springframework.cloud:spring-cloud-starter-config'
+        compile("org.springframework.boot:spring-boot-devtools")
+    }
+   /* bootRun {
+        addResources = true
+    }*/
+    idea {
+        module {
+            downloadSources = true
+            downloadJavadoc = false
+            inheritOutputDirs = false
+            outputDir = file("$buildDir/classes/main/")
+        }
+    }
+}
+
+idea {
+    project {
+        jdkName = '1.8'
+        languageLevel = '1.8'
+    }
+}

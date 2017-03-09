@@ -1,0 +1,13 @@
+rootProject.name = 'spring-event-sourcing'
+include 'discovery-service'
+include 'user-service'
+include 'edge-service'
+include 'store-app'
+include 'order-service'
+include 'payment-service'
+include 'cart-service'
+include 'inventory-service'
+include 'config-service'
+include 'catalog-service'
+include 'account-service'
+
