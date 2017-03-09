@@ -159,3 +159,5 @@ gradle-app.setting
 .idea/workspace.xml
 
 *.iml
+.iml
+.idea
