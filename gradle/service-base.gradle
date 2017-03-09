@@ -1,0 +1,52 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.4.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+//apply plugin: 'spring-boot'
+apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin // applying a plugin by plugin id is not supported in script plugins. You must use the plugin's fully qualified class name.
+sourceCompatibility = 1.8 // 必须在apply java插件之后
+targetCompatibility = 1.8
+
+bootRun {
+    addResources = true
+}
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = false
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+    }
+}
+dependencies {
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.springframework.cloud:spring-cloud-starter-config'
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile "org.springframework.cloud:spring-cloud-starter-eureka"
+
+}

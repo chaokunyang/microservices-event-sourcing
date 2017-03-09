@@ -1,0 +1,78 @@
+task sourcesJar(type: Jar) {
+    baseName "${baseName}"
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives sourcesJar
+}
+
+apply plugin: 'distribution'
+
+distributions {
+    main {
+        baseName = archivesBaseName
+
+        contents {
+            from { libsDir }
+        }
+    }
+
+    docs {
+        baseName = "$archivesBaseName-docs"
+
+        contents {
+            from(libsDir) {
+                include sourcesJar.archiveName
+            }
+        }
+    }
+}
+
+ext {
+    artifactoryBaseUrl = "${artifactoryBaseUrl}"
+    artifactorySnapshotRepoUrl = "$artifactoryBaseUrl/libs-snapshot-local"
+    artifactoryReleaseRepoUrl = "$artifactoryBaseUrl/libs-release-local"
+}
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        plugin(MavenPublication) {
+            from components.java
+            artifactId "${artifactId}"
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', 'dfs service')
+                root.appendNode('description', 'Spring Reactor 在线商店事件源实现')
+                root.appendNode('inceptionYear', '2017')
+
+                def developer = root.appendNode('developers').appendNode('developer')
+                developer.appendNode('id', 'yangck')
+                developer.appendNode('name', '杨朝坤')
+                developer.appendNode('email', 'chaokunyang@qq.com')
+            }
+
+            artifact sourcesJar
+        }
+    }
+
+    repositories {
+        maven {
+            name 'myLocal'
+            url "file://$projectDir/repo"
+        }
+
+        maven {
+            name 'remoteArtifactory'
+            url project.version.endsWith('-SNAPSHOT') ? artifactorySnapshotRepoUrl : artifactoryReleaseRepoUrl
+
+            credentials {
+                username = "${username}"
+                password = "${password}"
+            }
+        }
+    }
+}

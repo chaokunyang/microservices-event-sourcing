@@ -1,0 +1,33 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.4.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+//apply plugin: 'docker'
+apply plugin: se.transmode.gradle.plugins.docker.DockerPlugin
+
+task buildDocker(type:Docker, dependsOn: build) {
+    push = true
+//    applicationName = jar.baseName
+
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
+
+docker {
+
+}
