@@ -1,3 +1,13 @@
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+    compile 'org.springframework.boot:spring-boot-starter-freemarker'
+    compile 'com.h2database:h2'
+    runtime 'mysql:mysql-connector-java'
+    runtime 'joda-time:joda-time'
+    runtime 'com.google.code.gson:gson'
 }

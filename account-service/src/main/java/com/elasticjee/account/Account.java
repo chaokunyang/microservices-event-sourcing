@@ -10,7 +10,6 @@ import java.util.Set;
 
 /**
  * @author chaokunyang
- * @create 2017/3/9
  */
 @Entity
 public class Account extends BaseEntity {

@@ -1,33 +1,24 @@
-package com.elasticjee.customer;
+package com.elasticjee.user;
 
-import com.elasticjee.account.Account;
 import com.elasticjee.data.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * @author chaokunyang
+ * @author yangck
  */
 @Entity
-public class Customer extends BaseEntity {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Account account;
-
-    public Customer() {
-    }
-
-    public Customer(String firstName, String lastName, String email, Account account) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.account = account;
-    }
 
     public Long getId() {
         return id;
@@ -35,6 +26,14 @@ public class Customer extends BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -61,22 +60,14 @@ public class Customer extends BaseEntity {
         this.email = email;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" +
+        return "User{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", account=" + account +
                 '}';
     }
 }

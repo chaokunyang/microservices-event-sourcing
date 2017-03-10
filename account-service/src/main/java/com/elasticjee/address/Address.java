@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 /**
  * @author chaokunyang
- * @create 2017/3/9
  */
 @Entity
 public class Address extends BaseEntity {
