@@ -1,0 +1,27 @@
+package com.elasticjee.inventory;
+
+import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.repository.GraphRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @author chaokunyang
+ */
+
+@Repository
+public interface InventoryRepository extends GraphRepository<Inventory> {
+
+    /**
+     * Inventory到Product关系为：PRODUCT_TYPE
+     * Shipment到Inventory关系为：CONTAINS_PRODUCT
+     * @param productId
+     * @return
+     */
+    @Query("MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory] WHERE product.productId = {productId} AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory")
+    List<Inventory> getAvailableInventory(@Param("productId") String productId);
+
+}
+
