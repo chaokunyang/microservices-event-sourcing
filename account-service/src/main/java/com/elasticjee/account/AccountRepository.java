@@ -11,5 +11,5 @@ import java.util.List;
  * @author chaokunyang
  */
 public interface AccountRepository extends PagingAndSortingRepository<Account, Long> {
-    List<Account> findByUserId(@Param("userId") String userId);
+    List<Account> findAccountsByUserId(@Param("userId") Long userId);
 }

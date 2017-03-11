@@ -15,9 +15,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 @EnableJpaAuditing
 @EnableDiscoveryClient
 @EnableHystrix
-public class UserApplication {
+public class UserServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(UserServiceApplication.class, args);
     }
 
     public static class CustomizedRestMvcConfiguration extends RepositoryRestConfigurerAdapter {

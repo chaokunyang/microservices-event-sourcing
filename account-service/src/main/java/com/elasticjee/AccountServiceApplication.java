@@ -27,9 +27,9 @@ import org.springframework.stereotype.Component;
 @EnableHystrix
 @EnableJpaAuditing
 @EnableOAuth2Client
-public class AccountApplication {
+public class AccountServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AccountApplication.class, args);
+        SpringApplication.run(AccountServiceApplication.class, args);
     }
 
     @LoadBalanced
