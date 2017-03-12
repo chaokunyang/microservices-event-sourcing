@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * @author chaokunyang
  */
-@Repository
 public interface CatalogRepository extends GraphRepository<Catalog> {
     Catalog findCatalogByCatalogNumber(@Param("catalogNumber") Long catalogNumber);
 }

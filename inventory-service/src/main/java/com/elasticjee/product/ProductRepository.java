@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * @author chaokunyang
  */
-@Repository
 public interface ProductRepository extends GraphRepository<Product> {
     Product getProductByProductId(@Param("productId") String productId);
 }

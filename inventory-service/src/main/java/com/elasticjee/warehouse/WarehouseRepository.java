@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 /**
  * @author chaokunyang
  */
-@Repository
 public interface WarehouseRepository extends GraphRepository<Warehouse> {
 }

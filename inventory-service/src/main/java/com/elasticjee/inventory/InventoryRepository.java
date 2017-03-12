@@ -11,7 +11,6 @@ import java.util.List;
  * @author chaokunyang
  */
 
-@Repository
 public interface InventoryRepository extends GraphRepository<Inventory> {
 
     /**
