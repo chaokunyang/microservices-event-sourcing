@@ -23,5 +23,10 @@ public interface InventoryRepository extends GraphRepository<Inventory> {
     @Query("MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory] WHERE product.productId = {productId} AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory")
     List<Inventory> getAvailableInventory(@Param("productId") String productId);
 
+    @Query("MATCH (product:Product<-[:PRODUCT_TYPE]-(inventory:Inventory)-[:STOCKED_IN]->(:Warehouse {name:{warehouseName}) WHERE product.productId = {productId} AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory})")
+    List<Inventory> getAvailableInventoryForProductAndWarehouse(@Param("productrId") String productId, @Param("warehouseName") String warehouseName);
+
+    @Query("MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory) WHERE product.productId in {productIds} AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory")
+    List<Inventory> getAvailableInventoryForProductList(@Param("productIds")String[] productIds);
 }
 
