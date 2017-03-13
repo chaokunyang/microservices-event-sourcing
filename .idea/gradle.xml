@@ -3,15 +3,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../DevelopmentKit/gradle-3.2.1-all/gradle-3.2.1" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../DevEnvironment/gradle-3.2.1" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/account-service" />
-            <option value="$PROJECT_DIR$/cart-service" />
             <option value="$PROJECT_DIR$/catalog-service" />
             <option value="$PROJECT_DIR$/config-service" />
             <option value="$PROJECT_DIR$/discovery-service" />
@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/inventory-service" />
             <option value="$PROJECT_DIR$/order-service" />
             <option value="$PROJECT_DIR$/payment-service" />
+            <option value="$PROJECT_DIR$/shopping-cart-service" />
             <option value="$PROJECT_DIR$/store-app" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>

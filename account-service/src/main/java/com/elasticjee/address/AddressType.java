@@ -5,6 +5,6 @@ package com.elasticjee.address;
  * @author chaokunyang
  */
 public enum AddressType {
-    SHIPPING,
-    BILLING
+    SHIPPING, // 货运地址
+    BILLING // 发票地址
 }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * @author chaokunyang
- * @create 2017/3/9
  */
 public class User implements Serializable {
     private Long id;
@@ -63,5 +62,17 @@ public class User implements Serializable {
 
     public void setLastModified(Long lastModified) {
         this.lastModified = lastModified;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", createdAt=" + createdAt +
+                ", lastModified=" + lastModified +
+                '}';
     }
 }

@@ -5,9 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" group="account-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" group="account-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" group="account-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cart-service/cart-service.iml" filepath="$PROJECT_DIR$/.idea/modules/cart-service/cart-service.iml" group="cart-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cart-service/cart-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cart-service/cart-service_main.iml" group="cart-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cart-service/cart-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cart-service/cart-service_test.iml" group="cart-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" group="catalog-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" group="catalog-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" group="catalog-service" />
@@ -29,6 +26,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-service/payment-service.iml" group="payment-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-service/payment-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-service/payment-service_main.iml" group="payment-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-service/payment-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-service/payment-service_test.iml" group="payment-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service.iml" group="shopping-cart-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_main.iml" group="shopping-cart-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_test.iml" group="shopping-cart-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-event-sourcing.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-event-sourcing.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/store-app/store-app.iml" filepath="$PROJECT_DIR$/.idea/modules/store-app/store-app.iml" group="store-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/store-app/store-app_main.iml" filepath="$PROJECT_DIR$/.idea/modules/store-app/store-app_main.iml" group="store-app" />

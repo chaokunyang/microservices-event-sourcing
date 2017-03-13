@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="account-service_main" target="1.8" />
       <module name="account-service_test" target="1.8" />
@@ -20,6 +37,8 @@
       <module name="order-service_test" target="1.8" />
       <module name="payment-service_main" target="1.8" />
       <module name="payment-service_test" target="1.8" />
+      <module name="shopping-cart-service_main" target="1.8" />
+      <module name="shopping-cart-service_test" target="1.8" />
       <module name="store-app_main" target="1.8" />
       <module name="store-app_test" target="1.8" />
       <module name="user-service_main" target="1.8" />
