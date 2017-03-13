@@ -6,6 +6,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
     compile 'org.springframework.boot:spring-boot-starter-freemarker'
+    compile 'org.springframework.boot:spring-boot-starter-redis'
     compile 'com.h2database:h2'
     runtime 'mysql:mysql-connector-java'
     runtime 'joda-time:joda-time'

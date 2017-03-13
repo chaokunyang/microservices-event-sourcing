@@ -18,7 +18,6 @@
             <option value="$PROJECT_DIR$/edge-service" />
             <option value="$PROJECT_DIR$/inventory-service" />
             <option value="$PROJECT_DIR$/order-service" />
-            <option value="$PROJECT_DIR$/payment-service" />
             <option value="$PROJECT_DIR$/shopping-cart-service" />
             <option value="$PROJECT_DIR$/store-app" />
             <option value="$PROJECT_DIR$/user-service" />
