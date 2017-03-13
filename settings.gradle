@@ -9,4 +9,5 @@ include 'inventory-service'
 include 'config-service'
 include 'catalog-service'
 include 'account-service'
+include 'hystrix-dashboard'
 
