@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: development
+---
+spring:
+  profiles: development
+zuul:
+  ignored-services: '*'
+  ignoredPatterns: /**/api/**
+  routes:
+    account-service: /account/**
+    payment-service: /payment/**
+    inventory-service: /inventory/**
+    order-service: /order/**
+    user-service: /user/**
+    catalog-service: /catalog/**
+    shopping-cart-service: /shoppingcart/**
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8181/user
+  ignored: /catalog/**
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

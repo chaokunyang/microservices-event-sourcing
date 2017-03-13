@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: gateway-service
+server:
+  port: 9999
