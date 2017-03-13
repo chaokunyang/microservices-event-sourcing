@@ -1,0 +1,5 @@
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+    compile 'org.springframework.cloud:spring-cloud-starter-zuul'
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
+}

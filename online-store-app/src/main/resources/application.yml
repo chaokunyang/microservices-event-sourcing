@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: development
+---
+spring:
+  profiles: development
+  application:
+    name: online-store-app
+zuul:
+  ignored-services: '*'
+  routes:
+    edge-service:
+      path: /api/**
+      url: http://localhost:9999
+    auth-service:
+      path: /user/**
+      url: http://localhost:8181/user
+security:
+  enable-csrf: false
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8181/user
+    client:
+      accessTokenUri: http://localhost:8181/oauth/token
+      userAuthorizationUri: http://localhost:8181/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+  ignored: /assets/**
+eureka:
+  instance:
+    non-secure-port: 8787
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
