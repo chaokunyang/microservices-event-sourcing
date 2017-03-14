@@ -1,4 +1,4 @@
-package api.v1;
+package com.elasticjee.api.v1;
 
 import com.elasticjee.inventory.Inventory;
 import com.elasticjee.inventory.InventoryRepository;

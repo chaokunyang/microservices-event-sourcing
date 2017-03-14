@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: account-service
+---
+spring:
+  # 没有其他profile激活时会使用它
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888

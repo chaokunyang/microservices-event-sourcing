@@ -1,0 +1,31 @@
+spring.profiles.active: development
+---
+spring:
+  profiles: development
+  neo4j:
+    host: ${SPRING_NEO4J_HOST:localhost}
+    port: ${SPRING_NEO4J_PORT:7474}
+    username: neo4j
+    password: secret
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: docker
+  neo4j:
+    host: ${SPRING_NEO4J_HOST:neo4j}
+    port: ${SPRING_NEO4J_PORT:7474}
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/

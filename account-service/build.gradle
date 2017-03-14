@@ -5,7 +5,7 @@ dependencies {
     compile "org.springframework.cloud:spring-cloud-starter-hystrix"
     compile "org.springframework.cloud:spring-cloud-starter-oauth2"
     compile "org.springframework.cloud:spring-cloud-starter-feign"
-    compile "com.h2database:h2"
+    runtime 'mysql:mysql-connector-java'
     compile "joda-time:joda-time"
     compile "com.google.code.gson:gson"
 }

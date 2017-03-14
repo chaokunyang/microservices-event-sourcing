@@ -22,6 +22,16 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("password").roles("USER");
     }
 
+   /* @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .withDefaultSchema()
+                .withUser("user").password("password").roles("USER").and()
+                .withUser("admin").password("password").roles("USER", "ADMIN");
+    }*/
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

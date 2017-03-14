@@ -6,10 +6,12 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 
 /**
- * 购物车事件
+ * <h1>购物车事件</h1>
+ * 因为购物车事件频繁基于 id, userId 被查询，所以应该建立索引。主键id会自动建索引，这里只是为了保证在索引中的列的顺序
  * @author yangck
  */
-@Entity(name = "CartEvent")
+@Entity
+@Table(name = "cart_event", indexes = {@Index(name = "IDX_CART_EVENT_USER", columnList = "id, userId")})
 public class CartEvent extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

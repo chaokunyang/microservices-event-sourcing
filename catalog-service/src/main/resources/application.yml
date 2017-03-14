@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: development
+---
+spring:
+  profiles: development
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+    # disable open EntityManager in View
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/online_store?useUnicode=true&characterEncoding=utf-8
+    username: online_store
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

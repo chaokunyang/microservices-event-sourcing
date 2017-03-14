@@ -1,0 +1,27 @@
+spring.profiles.active: development
+---
+spring:
+  profiles: development
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+  jackson:
+    date-format: "YYYY-MM-dd"
+    serialization:
+      write_dates_as_timestamps: true
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8181/user
+    client:
+      client-id: elasticjee
+  ignored: /api/**
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

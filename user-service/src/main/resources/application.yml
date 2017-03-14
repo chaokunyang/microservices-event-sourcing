@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: development
+---
+spring:
+  profiles: development
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+    # disable open EntityManager in View
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/online_store?useUnicode=true&characterEncoding=utf-8
+    username: online_store
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8181
+  contextPath: /
+security:
+  user:
+    password: password
+  enable-csrf: false
+  ignored: /resources/**
+logging.level.org.springframework.security: DEBUG

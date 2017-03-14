@@ -3,3 +3,9 @@ spring:
     name: online-store-app
 server:
   port: 8787
+---
+spring:
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888
