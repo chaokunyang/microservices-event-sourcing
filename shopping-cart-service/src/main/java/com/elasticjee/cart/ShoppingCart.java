@@ -25,11 +25,11 @@ public class ShoppingCart {
     }
 
     /**
-     * 从购物车事件得到购物车项的聚合(aggregate)
+     * 从购物车事件的聚合(aggregate)生成并得到cart items
      * @return 代表购物车状态的一个新的 {@link CartItem} list
-     * @throws Exception 如果在购物车中一个产品不能在目录里面找到则抛出异常
+     * @throws Exception 如果在购物车中的一个商品不在目录里面，则抛出异常
      */
-    public List<CartItem> getCartItems() throws Exception {
+    public List<CartItem> generateCartItemsAndGet() throws Exception {
         cartItems = productMap.entrySet().stream()
                 .map(item -> new CartItem(item.getKey(), catalog.getProducts().stream()
                         .filter(product -> Objects.equals(product.getProductId(), item.getKey()))

@@ -13,6 +13,11 @@ public class OrderEvent extends BaseEntity {
     private OrderEventType type;
     private String orderId;
 
+    public OrderEvent(OrderEventType type, String orderId) {
+        this.type = type;
+        this.orderId = orderId;
+    }
+
     @Override
     public String toString() {
         return "OrderEvent{" +

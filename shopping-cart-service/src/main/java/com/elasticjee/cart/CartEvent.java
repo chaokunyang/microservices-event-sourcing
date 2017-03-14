@@ -23,6 +23,23 @@ public class CartEvent extends BaseEntity {
     public CartEvent() {
     }
 
+    /**
+     * 检出/清除购物车时使用这个构造器
+     * @param cartEventType
+     * @param userId
+     */
+    public CartEvent(CartEventType cartEventType, Long userId) {
+        this.cartEventType = cartEventType;
+        this.userId = userId;
+    }
+
+    /**
+     * ADD_ITEM/REMOVE_ITEM时使用这个构造器
+     * @param cartEventType
+     * @param userId
+     * @param productId
+     * @param quantity
+     */
     public CartEvent(CartEventType cartEventType, Long userId, String productId, Integer quantity) {
         this.cartEventType = cartEventType;
         this.userId = userId;

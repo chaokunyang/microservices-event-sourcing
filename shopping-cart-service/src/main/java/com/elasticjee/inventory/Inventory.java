@@ -18,6 +18,14 @@ public class Inventory extends BaseEntityDto {
 
     private InventoryStatus status;
 
+    public Inventory() {
+    }
+
+    public Inventory(String inventoryNumber, Product product) {
+        this.inventoryNumber = inventoryNumber;
+        this.product = product;
+    }
+
     @Override
     public String toString() {
         return "Inventory{" +

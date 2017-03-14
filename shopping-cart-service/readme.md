@@ -36,6 +36,7 @@ Mono.fromCallable(System::currentTimeMillis)
     .subscribe(System.out::println);
 ```
 
+3、Reactive programming is oriented around data flows and the propagation of change. This means that the underlying execution model will automatically propagate changes through the data flow.
 
 
 
