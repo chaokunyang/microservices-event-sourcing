@@ -9,8 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.elasticjee.order.OrderStatus.CONFIRMED;
-
 /**
  * 订单领域对象
  * @author chaokunyang
@@ -47,40 +45,7 @@ public class Order {
         if(orderStatus == null)
             orderStatus = OrderStatus.PURCHASED;
 
-        switch (orderStatus) {
-            case PURCHASED:
-                if(orderEvent.getType() == OrderEventType.CREATED)
-                    orderStatus = OrderStatus.PENDING; // 表示订单状态前进：PURCHASED -> PENDING
-                break;
-            case PENDING:
-                if(orderEvent.getType() == OrderEventType.ORDERED)
-                    orderStatus = CONFIRMED; // 表示订单状态前进：PENDING -> CONFIRMED
-                else if (orderEvent.getType() == OrderEventType.PURCHASED)
-                    orderStatus = OrderStatus.PURCHASED; // 表示订单状态回退：PENDING -> PURCHASED
-                break;
-            case CONFIRMED:
-                if(orderEvent.getType() == OrderEventType.SHIPPED) {
-                    orderStatus = OrderStatus.SHIPPED; // 表示订单状态前进：CONFIRMED -> SHIPPED
-                }else if(orderEvent.getType() == OrderEventType.CREATED) {
-                    orderStatus = OrderStatus.PENDING; // 表示订单状态回退：CONFIRMED -> PENDING
-                }
-                break;
-            case SHIPPED:
-                if(orderEvent.getType() == OrderEventType.DELIVERED) {
-                    orderStatus = OrderStatus.DELIVERED; // 表示订单状态前进：SHIPPED -> DELIVERED
-                }else if(orderEvent.getType() == OrderEventType.ORDERED) {
-                    orderStatus = OrderStatus.CONFIRMED; // 表示订单状态回退：CONFIRMED -> PENDING
-                }
-                break;
-            case DELIVERED:
-                if(orderEvent.getType() == OrderEventType.SHIPPED) {
-                    orderStatus = OrderStatus.SHIPPED; // 表示订单状态回退：DELIVERED -> SHIPPED
-                }
-                break;
-            default:
-                // 无效的订单状态类型
-                break;
-        }
+        orderStatus = orderStatus.nextStatus(orderEvent);
 
         return this;
     }
