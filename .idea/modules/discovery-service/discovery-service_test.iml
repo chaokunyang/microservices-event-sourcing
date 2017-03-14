@@ -14,8 +14,8 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-devtools:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter-eureka:1.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.4.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter-eureka-server:1.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.4.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: junit:junit:4.11" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter:1.1.7.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-config-client:1.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.8.6" level="project" />
@@ -32,9 +32,11 @@
     <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream:1.4.9" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-actuator:1.4.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-netflix-eureka-server:1.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: org.assertj:assertj-core:2.5.0" level="project" />
     <orderEntry type="library" name="Gradle: org.mockito:mockito-core:1.10.19" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
@@ -79,6 +81,11 @@
     <orderEntry type="library" name="Gradle: xpp3:xpp3_min:1.1.4c" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-freemarker:1.4.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: com.sun.jersey:jersey-servlet:1.19.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.sun.jersey:jersey-server:1.19.1" level="project" />
+    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.6" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:json-smart:2.2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.json:json:20140107" level="project" />
@@ -99,7 +106,6 @@
     <orderEntry type="library" name="Gradle: com.netflix.servo:servo-internal:0.10.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10" level="project" />
-    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.governator:governator-core:1.12.10" level="project" />
     <orderEntry type="library" name="Gradle: org.ow2.asm:asm:5.0.4" level="project" />
@@ -117,6 +123,15 @@
     <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.22" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jul-to-slf4j:1.7.22" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.22" level="project" />
+    <orderEntry type="library" name="Gradle: org.freemarker:freemarker:2.3.25-incubating" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-context-support:4.3.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: com.amazonaws:aws-java-sdk-core:1.11.18" level="project" />
+    <orderEntry type="library" name="Gradle: com.amazonaws:aws-java-sdk-ec2:1.11.18" level="project" />
+    <orderEntry type="library" name="Gradle: com.amazonaws:aws-java-sdk-autoscaling:1.11.18" level="project" />
+    <orderEntry type="library" name="Gradle: com.amazonaws:aws-java-sdk-sts:1.11.18" level="project" />
+    <orderEntry type="library" name="Gradle: com.amazonaws:aws-java-sdk-route53:1.11.18" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.8.6" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.woodstox:woodstox-core:5.0.3" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:accessors-smart:1.1" level="project" />
     <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.55" level="project" />
     <orderEntry type="library" name="Gradle: commons-jxpath:commons-jxpath:1.3" level="project" />
@@ -131,6 +146,7 @@
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-transport-native-epoll:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.9" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.8.6" level="project" />
     <orderEntry type="library" name="Gradle: org.antlr:stringtemplate:3.2.1" level="project" />
     <orderEntry type="library" name="Gradle: antlr:antlr:2.7.7" level="project" />
     <orderEntry type="library" name="Gradle: com.google.inject.extensions:guice-assistedinject:4.0" level="project" />

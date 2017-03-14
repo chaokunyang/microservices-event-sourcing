@@ -16,10 +16,12 @@
             <option value="$PROJECT_DIR$/config-service" />
             <option value="$PROJECT_DIR$/discovery-service" />
             <option value="$PROJECT_DIR$/edge-service" />
+            <option value="$PROJECT_DIR$/hystrix-dashboard" />
             <option value="$PROJECT_DIR$/inventory-service" />
+            <option value="$PROJECT_DIR$/online-store-app" />
             <option value="$PROJECT_DIR$/order-service" />
+            <option value="$PROJECT_DIR$/payment-service" />
             <option value="$PROJECT_DIR$/shopping-cart-service" />
-            <option value="$PROJECT_DIR$/store-app" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>
         </option>

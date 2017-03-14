@@ -31,8 +31,12 @@
       <module name="discovery-service_test" target="1.8" />
       <module name="edge-service_main" target="1.8" />
       <module name="edge-service_test" target="1.8" />
+      <module name="hystrix-dashboard_main" target="1.8" />
+      <module name="hystrix-dashboard_test" target="1.8" />
       <module name="inventory-service_main" target="1.8" />
       <module name="inventory-service_test" target="1.8" />
+      <module name="online-store-app_main" target="1.8" />
+      <module name="online-store-app_test" target="1.8" />
       <module name="order-service_main" target="1.8" />
       <module name="order-service_test" target="1.8" />
       <module name="payment-service_main" target="1.8" />

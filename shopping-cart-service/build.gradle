@@ -1,0 +1,12 @@
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
+    testCompile 'org.springframework.security:spring-security-test:4.0.3.RELEASE'
+    compile 'io.projectreactor:reactor-core:2.5.0.M2'
+    compile 'com.h2database:h2'
+    runtime 'mysql:mysql-connector-java'
+    compile 'joda-time:joda-time'
+    compile 'com.google.code.gson:gson'
+}
