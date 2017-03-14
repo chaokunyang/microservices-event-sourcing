@@ -1,6 +1,7 @@
 package com.elasticjee.order;
 
-import org.apache.tomcat.jni.Address;
+import com.elasticjee.address.Address;
+import com.elasticjee.address.AddressType;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -22,6 +23,18 @@ public class Order {
     private OrderStatus orderStatus; // 订单状态是对事件聚合产生的，而不是持久化到数据库的
     private List<OrderItem> orderItems = new ArrayList<>();
     private Address shippingAddress;
+
+    public Order() {
+        this.orderStatus = OrderStatus.PURCHASED;
+    }
+
+    public Order(String accountNumber, Address shippingAddress) {
+        this();
+        this.accountNumber = accountNumber;
+        this.shippingAddress = shippingAddress;
+        if (shippingAddress.getAddressType() == null)
+            this.shippingAddress.setAddressType(AddressType.SHIPPING);
+    }
 
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);

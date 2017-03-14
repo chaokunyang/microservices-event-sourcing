@@ -41,7 +41,7 @@ public class Account extends BaseEntityDto {
         this.accountNumber = accountNumber;
     }
 
-    public Boolean getDefaultAccount() {
+    public Boolean isDefaultAccount() {
         return defaultAccount;
     }
 
