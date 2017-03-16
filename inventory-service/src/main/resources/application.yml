@@ -1,7 +1,7 @@
-spring.profiles.active: development
+spring.profiles.active: dev
 ---
 spring:
-  profiles: development
+  profiles: dev
   neo4j:
     host: ${SPRING_NEO4J_HOST:localhost}
     port: ${SPRING_NEO4J_PORT:7474}

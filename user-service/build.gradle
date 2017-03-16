@@ -9,6 +9,15 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-redis'
     compile 'com.h2database:h2'
     runtime 'mysql:mysql-connector-java'
-    runtime 'joda-time:joda-time'
-    runtime 'com.google.code.gson:gson'
+    compile 'joda-time:joda-time'
+    compile 'com.google.code.gson:gson'
+
+    // 静态文件
+    compile 'org.webjars:angularjs:1.4.3'
+    compile 'org.webjars:jquery:2.1.1'
+    compile 'org.webjars:bootstrap:3.2.0'
+    compile 'org.webjars:webjars-locator'
+
+    // 后续需要使用插件把改以来改为 optional， 而不是 compile
+    compile 'org.springframework.boot:spring-boot-configuration-processor'
 }

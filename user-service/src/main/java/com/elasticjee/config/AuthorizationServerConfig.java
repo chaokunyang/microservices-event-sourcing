@@ -19,7 +19,8 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
         authManagerBuilder
                 .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+                .withUser("user").password("password").roles("USER")
+                .and().withUser("admin").password("password").roles("ADMIN", "USER");
     }
 
    /* @Autowired
@@ -46,6 +47,20 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
     @Configuration
     @EnableAuthorizationServer
     protected static class OAuth2Config extends AuthorizationServerConfigurerAdapter {
+        /**
+         * 也可以放在application.yml配置文件里面
+         *
+         * security:
+             oauth2:
+                 client:
+                     client-id: elasticjee
+                     client-secret: elasticjeesecret
+                     scope: read,write
+                     auto-approve-scopes: '.*'
+         *
+         * @param clients
+         * @throws Exception
+         */
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients

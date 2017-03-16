@@ -1,7 +1,7 @@
-spring.profiles.active: development
+spring.profiles.active: dev
 ---
 spring:
-  profiles: development
+  profiles: dev
   data:
     mongodb:
       host: localhost
@@ -13,7 +13,7 @@ spring:
 security:
   oauth2:
     resource:
-      userInfoUri: http://localhost:8181/user
+      userInfoUri: http://localhost:8181/auth/user
     client:
       client-id: elasticjee
   ignored: /api/**

@@ -3,22 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" group="account-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service.iml" group="account-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" group="account-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_main.iml" group="account-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" group="account-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/account-service/account-service_test.iml" group="account-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" group="catalog-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service.iml" group="catalog-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" group="catalog-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_main.iml" group="catalog-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" group="catalog-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/catalog-service/catalog-service_test.iml" group="catalog-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/config-service/config-service.iml" filepath="$PROJECT_DIR$/.idea/modules/config-service/config-service.iml" group="config-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/config-service/config-service.iml" filepath="$PROJECT_DIR$/.idea/modules/config-service/config-service.iml" group="config-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/config-service/config-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/config-service/config-service_main.iml" group="config-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/config-service/config-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/config-service/config-service_test.iml" group="config-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service.iml" group="discovery-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service.iml" group="discovery-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service_main.iml" group="discovery-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service/discovery-service_test.iml" group="discovery-service" />
@@ -29,19 +21,13 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hystrix-dashboard/hystrix-dashboard_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hystrix-dashboard/hystrix-dashboard_main.iml" group="hystrix-dashboard" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hystrix-dashboard/hystrix-dashboard_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hystrix-dashboard/hystrix-dashboard_test.iml" group="hystrix-dashboard" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service.iml" group="inventory-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service.iml" group="inventory-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_main.iml" group="inventory-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_main.iml" group="inventory-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_test.iml" group="inventory-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/inventory-service/inventory-service_test.iml" group="inventory-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app.iml" filepath="$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app.iml" group="online-store-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app_main.iml" filepath="$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app_main.iml" group="online-store-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app_test.iml" filepath="$PROJECT_DIR$/.idea/modules/online-store-app/online-store-app_test.iml" group="online-store-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service.iml" group="order-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service.iml" group="order-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service_main.iml" group="order-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service_main.iml" group="order-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service_test.iml" group="order-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-service/order-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/order-service/order-service_test.iml" group="order-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-service/payment-service.iml" group="payment-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment-service/payment-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/payment-service/payment-service_main.iml" group="payment-service" />
@@ -51,10 +37,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/shopping-cart-service/shopping-cart-service_test.iml" group="shopping-cart-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-event-sourcing.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-event-sourcing.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service.iml" group="user-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service.iml" group="user-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service_main.iml" group="user-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service_main.iml" group="user-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service_test.iml" group="user-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/user-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/user-service_test.iml" group="user-service" />
     </modules>
   </component>

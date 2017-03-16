@@ -7,4 +7,4 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-spring.profiles.active: development
+spring.profiles.active: dev

@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: development
+    active: dev
 ---
 spring:
-  profiles: development
+  profiles: dev
   jpa:
     properties:
       hibernate:
@@ -19,7 +19,7 @@ spring:
 security:
   oauth2:
     resource:
-      userInfoUri: http://localhost:8181/user
+      userInfoUri: http://localhost:8181/auth/user
     client:
       client-id: elasticjee
       access-token-uri: http://localhost:8787

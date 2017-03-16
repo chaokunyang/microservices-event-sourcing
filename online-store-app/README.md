@@ -1,20 +1,5 @@
-spring:
-  profiles:
-    active: dev
----
-spring:
-  profiles: dev
-  application:
-    name: online-store-app
-zuul:
-  ignored-services: '*'
-  routes:
-    edge-service:
-      path: /api/**
-      url: http://localhost:9999
-    auth-service:
-      path: /user/**
-      url: http://localhost:8181/auth/user
+1、The ingredients of the client are online store. When we run this app it will look for a configuration file which we provide, part as follows:
+```yaml
 security:
   enable-csrf: false
   oauth2:
@@ -28,12 +13,5 @@ security:
       accessTokenUri: http://localhost:8181/oauth/token
       userAuthorizationUri: http://localhost:8181/oauth/authorize
   ignored: /assets/**
-eureka:
-  instance:
-    non-secure-port: 8787
-    prefer-ip-address: true
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+```
+### The configuration refers to a user info endpoint "/user" which we implemented in user-service.

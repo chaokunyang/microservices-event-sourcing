@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: development
+    active: dev
 ---
 spring:
-  profiles: development
+  profiles: dev
   jpa:
     properties:
       hibernate:
@@ -16,12 +16,17 @@ spring:
     username: online_store
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+  redis:
+      host: u1.com
+      port: 6379
 server:
   port: 8181
-  contextPath: /
+  # The context path has to be explicit if you are running both the client and the auth server on localhost, otherwise the cookie paths clash and the two apps cannot agree on a session identifier.
+  contextPath: /auth
 security:
   user:
     password: password
   enable-csrf: false
   ignored: /resources/**
 logging.level.org.springframework.security: DEBUG
+
