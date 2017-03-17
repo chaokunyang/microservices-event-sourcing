@@ -5,18 +5,20 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
-    compile 'org.springframework.boot:spring-boot-starter-freemarker'
+//    compile 'org.springframework.boot:spring-boot-starter-freemarker'
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile 'org.springframework.boot:spring-boot-starter-redis'
     compile 'com.h2database:h2'
     runtime 'mysql:mysql-connector-java'
     compile 'joda-time:joda-time'
     compile 'com.google.code.gson:gson'
 
+    // 静态文件作为依赖虽然能够简洁源码，但是不方便静态页面调试，所以不采用这种方式。而且编写前端页面时也没有代码提示
     // 静态文件
-    compile 'org.webjars:angularjs:1.4.3'
-    compile 'org.webjars:jquery:2.1.1'
-    compile 'org.webjars:bootstrap:3.2.0'
-    compile 'org.webjars:webjars-locator'
+//    compile 'org.webjars:angularjs:1.4.3'
+//    compile 'org.webjars:jquery:2.1.1'
+//    compile 'org.webjars:bootstrap:3.2.0'
+//    compile 'org.webjars:webjars-locator'
 
     // 后续需要使用插件把改以来改为 optional， 而不是 compile
     compile 'org.springframework.boot:spring-boot-configuration-processor'

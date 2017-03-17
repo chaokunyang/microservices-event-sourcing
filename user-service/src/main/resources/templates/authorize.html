@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="Chaokun Yang">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>elasticjee 微服务 authorize</title>
+
+    <!--<link rel="stylesheet" type="text/css"
+          href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+    <link href="../static/dist/bootstrap/css/bootstrap.min.css" th:href="@{/dist/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../static/assets/css/ie10-viewport-bug-workaround.css" th:href="@{/assets/css/ie10-viewport-bug-workaround.css}" rel="stylesheet" />
+    <link href="../static/assets/css/authorize.css" th:href="@{/assets/css/authorize.css}" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script th:src="@{/assets/js/html5shiv.min.js}" src="../static/assets/js/html5shiv.min.js"></script>
+    <script th:src="@{/assets/js/respond.min.js}" src="../static/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div id="authorize" class="container">
+
+    <!--/*@thymesVar id="authorizationRequest" type="org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails"*/-->
+
+    <h2>请确认</h2>
+    <p>你想授权
+    <span th:text="${authorizationRequest.clientId}">authorizationRequest.clientId</span> 使用 scope<span th:text="${authorizationRequest ? authorizationRequest.scope : ''}"></span>访问你的受保护资源吗</p>
+
+    <form id="confirmForm", name="confirmForm" action="oauth/authorize", method="post">
+        <input name="user_oauth_approval" value="true" type="hidden"/>
+        <input name="scope.openid" value="true" type="hidden"/>
+        <button class="btn btn-primary" type="submit">授权</button>
+    </form>
+
+    <form id="denyForm" name="denyForm" action="oauth/authorize" method="post">
+        <input name="user_oauth_approval" value="false" type="hidden" />
+        <button class="btn btn-primary" type="submit">拒绝</button>
+    </form>
+
+</div> <!-- /container -->
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script th:src="@{/assets/js/ie10-viewport-bug-workaround.js}" src="../static/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

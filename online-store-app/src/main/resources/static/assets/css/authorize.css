@@ -1,0 +1,7 @@
+#authorize {
+    margin: 10em auto auto;
+    text-align: center;
+}
+#authorize form {
+    display: inline-block;
+}
