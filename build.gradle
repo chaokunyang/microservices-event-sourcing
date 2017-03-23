@@ -14,7 +14,7 @@ buildscript {
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-    group = 'com.chaokunyang.shop'
+    group = 'com.elasticjee.onlinestore'
     version = '0.1'
 }
 

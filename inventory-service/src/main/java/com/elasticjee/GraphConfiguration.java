@@ -30,7 +30,7 @@ public class GraphConfiguration extends Neo4jConfiguration {
     @Autowired
     private Neo4jProperties properties;
 
-    @Override
+    @Bean
     public Neo4jServer neo4jServer() {
         String uri = properties.getUri();
         String username = properties.getUsername();
@@ -40,7 +40,7 @@ public class GraphConfiguration extends Neo4jConfiguration {
         return new RemoteServer(uri);
     }
 
-    @Override
+    @Bean
     public SessionFactory getSessionFactory() {
         // 指定Neo4j应该扫描哪些包，使用每个包里面的类来指定包扫描路径，以避免脆弱性，类型安全，易于重构
         Class<?>[] packageClasses = {
@@ -57,5 +57,10 @@ public class GraphConfiguration extends Neo4jConfiguration {
                                     .collect(Collectors.toList())
                                     .toArray(new String[packageClasses.length]);
         return new SessionFactory(packageNames);
+    }
+
+    @Bean
+    public Session getSession() throws Exception {
+        return super.getSession();
     }
 }
