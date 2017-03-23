@@ -32,8 +32,35 @@ MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory) WHERE product.pro
 能够得出正确结果，表面查询语法写的没错
 
 3、Cypher示例
+1)
 ```
 MATCH (user)-[:friend]->(follower)
 WHERE user.name IN ['Joe', 'John', 'Sara', 'Maria', 'Steve'] AND follower.name =~ 'S.*'
 RETURN user.name, follower.name
 ```
+2)id()
+***Returns the id of the relationship or node.***
+Syntax: id( expression )
+Arguments:
+
+Name	|   Description
+----    |   ----
+expression | An expression that returns a node or a relationship.
+Query:
+```
+MATCH (a)
+RETURN id(a)
+This returns the node id for three nodes.
+```
+Result:
+
++-------+
+| id(a) |
++-------+
+| 0     |
+| 1     |
+| 2     |
+| 3     |
+| 4     |
++-------+
+5 rows

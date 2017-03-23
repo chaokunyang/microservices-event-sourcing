@@ -18,6 +18,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-rest:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter-hystrix:1.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-neo4j:4.0.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-configuration-processor:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter:1.1.7.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-config-client:1.2.2.RELEASE" level="project" />
@@ -48,6 +49,7 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-tx:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.22" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.22" level="project" />
+    <orderEntry type="library" name="Gradle: org.json:json:20140107" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.2.0" level="project" />
@@ -109,7 +111,6 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:json-smart:2.2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.json:json:20140107" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-crypto:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.bouncycastle:bcpkix-jdk15on:1.55" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.5.11" level="project" />

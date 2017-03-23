@@ -3,4 +3,6 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
     compile 'org.springframework.data:spring-data-neo4j:4.0.0.RELEASE'
+    // 后续需要使用插件把改以来改为 optional， 而不是 compile
+    compile 'org.springframework.boot:spring-boot-configuration-processor'
 }
