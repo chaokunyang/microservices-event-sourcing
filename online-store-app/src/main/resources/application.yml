@@ -26,7 +26,7 @@ security:
       clientId: elasticjee
       clientSecret: elasticjeesecret
       accessTokenUri: http://localhost:8181/auth/oauth/token
-      userAuthorizationUri: http://localhost:8181/oauth/authorize
+      userAuthorizationUri: http://localhost:8181/auth/oauth/authorize
   ignored: /assets/**
 eureka:
   instance:

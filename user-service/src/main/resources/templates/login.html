@@ -1,19 +1,19 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content="Chaokun Yang">
-    <link rel="icon" href="../../favicon.ico">
+    <meta name="description" content="" />
+    <meta name="author" content="Chaokun Yang" />
+    <link rel="icon" href="../../favicon.ico" />
 
-    <title>elasticjee 微服务 login</title>
+    <title>timeyang.com 微服务 login</title>
 
     <!--<link rel="stylesheet" type="text/css"
-          href="/webjars/bootstrap/css/bootstrap.min.css" />-->
-    <link href="../static/dist/bootstrap/css/bootstrap.min.css" th:href="@{/dist/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+      href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+    <link href="../static/assets/dist/bootstrap/css/bootstrap.min.css" th:href="@{/assets/dist/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../static/assets/css/ie10-viewport-bug-workaround.css" th:href="@{/assets/css/ie10-viewport-bug-workaround.css}" rel="stylesheet" />
@@ -29,18 +29,18 @@
 
 <div class="container">
 
-    <form class="form-signin" action="/login" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus />
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+    <form class="form-signin" action="login" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading">请登录</h2>
+        <label for="username" class="sr-only">用户名</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="用户名/邮箱/手机号码" required="required" autofocus="autofocus" />
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="密码" required="required" />
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me" /> 记住我
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     </form>
 
 </div> <!-- /container -->

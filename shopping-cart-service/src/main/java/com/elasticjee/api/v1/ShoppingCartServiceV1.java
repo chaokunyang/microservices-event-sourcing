@@ -11,6 +11,7 @@ import com.elasticjee.user.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Service;
@@ -39,10 +40,11 @@ public class ShoppingCartServiceV1 {
     private OAuth2RestTemplate oAuth2RestTemplate;
 
     @Autowired
-    private CartEventRepository cartEventRepository;
+    @Qualifier("loadBalancedRestTemplate")
+    private RestTemplate restTemplate;
 
     @Autowired
-    private RestTemplate restTemplate;
+    private CartEventRepository cartEventRepository;
 
     /**
      * 从user-service得到已验证的用户

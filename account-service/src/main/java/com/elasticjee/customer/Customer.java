@@ -16,7 +16,7 @@ public class Customer extends BaseEntity {
     private String firstName;
     private String lastName;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     public Customer() {

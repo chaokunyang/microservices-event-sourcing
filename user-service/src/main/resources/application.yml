@@ -27,6 +27,6 @@ security:
   user:
     password: password
   enable-csrf: false
-  ignored: /resources/**
+  ignored: /assets/**
 logging.level.org.springframework.security: DEBUG
 

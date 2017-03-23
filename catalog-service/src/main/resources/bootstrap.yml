@@ -1,6 +1,10 @@
+server:
+  port: 0
 spring:
   application:
     name: catalog-service
+#  profiles:
+#    active: dev
 ---
 spring:
   profiles: default

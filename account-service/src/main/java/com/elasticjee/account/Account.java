@@ -57,7 +57,6 @@ public class Account extends BaseEntity {
         this.accountNumber = accountNumber;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Boolean getDefaultAccount() {
         return defaultAccount;
     }
@@ -75,6 +74,7 @@ public class Account extends BaseEntity {
         this.creditCards = creditCards;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Address> getAddresses() {
         return addresses;
     }

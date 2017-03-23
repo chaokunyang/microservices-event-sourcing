@@ -45,7 +45,7 @@ public class CartServiceApplication {
 
     @LoadBalanced
     @Bean("loadBalancedRestTemplate")
-    public RestTemplate loadBanlancedRestTemplate() {
+    public RestTemplate loadBalancedRestTemplate() {
         return new RestTemplate();
     }
 

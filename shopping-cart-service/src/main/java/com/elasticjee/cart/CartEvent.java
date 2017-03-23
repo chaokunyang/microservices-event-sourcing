@@ -1,7 +1,6 @@
 package com.elasticjee.cart;
 
 import com.elasticjee.data.BaseEntity;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 

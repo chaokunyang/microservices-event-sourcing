@@ -1,6 +1,8 @@
 spring:
   application:
     name: shopping-cart-service
+  profiles:
+    active: dev
 server:
   port: 8888
 ---
