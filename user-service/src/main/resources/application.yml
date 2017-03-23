@@ -17,7 +17,7 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
   redis:
-      host: u1.com
+      host: localhost
       port: 6379
 server:
   port: 8181

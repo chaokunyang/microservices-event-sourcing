@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/favicon.ico">
+
+    <title>在线商店首页</title>
+
+    <link href="assets/css/store.css">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="assets/lib/angular/angular.js"></script>
+    <script src="assets/lib/angular/angular-route.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/controller.js"></script>
+
+</head>
+<body>
+    <div class="page">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">在线商店 timeyang.com</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul ng-if="user.id != undefined" class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">首页</a>
+                        </li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+
+
+
+                        <li ng-if="user.id != undefined">
+                    <span class="ng-binding welcome-tag">
+                        <span>Welcome,</span>
+                        <span>{{ user.firstName }} {{ user.lastName }}!</span>
+                    </span>
+                        </li>
+                        <li ng-if="user.id != undefined"><a href="/#/orders">Orders</a></li>
+                        <li ng-if="user.id != undefined"><a href="/#/settings">Settings</a></li>
+                        <li ng-if="user.id != undefined"><a href="/#/cart"><i class="fa fa-shopping-cart"></i><span class="cart-icon">Cart</span></a></li>
+                        <li ng-if="user.id == undefined"><a href="/login">Login</a></li>
+                        <li ng-if="user.id != undefined"><a ng-click="logout()" href="#">Logout</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div ng-view></div>
+
+        <div id="loading" class="loading"><img src="assets/img/AjaxLoader.gif"></div>
+
+    </div>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/lib/jquery/jquery.min.js"></script>
+    <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

@@ -1,8 +1,4 @@
 spring:
-  profiles:
-    active: dev
----
-spring:
   profiles: dev
   application:
     name: online-store-app

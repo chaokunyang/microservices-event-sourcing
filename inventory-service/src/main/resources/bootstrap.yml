@@ -2,6 +2,8 @@ spring.profiles.active: dev
 spring:
   application:
     name: inventory-service
+server:
+  port: 0
 ---
 spring:
   profiles: docker
