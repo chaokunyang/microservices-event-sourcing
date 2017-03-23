@@ -1,9 +1,9 @@
 package com.elasticjee;
 
+
 import com.elasticjee.address.AddressRepository;
 import com.elasticjee.catalog.CatalogRepository;
 import com.elasticjee.inventory.InventoryRepository;
-import com.elasticjee.product.Product;
 import com.elasticjee.product.ProductRepository;
 import com.elasticjee.shipment.ShipmentRepository;
 import com.elasticjee.warehouse.WarehouseRepository;
@@ -51,11 +51,12 @@ public class GraphConfiguration extends Neo4jConfiguration {
                 ShipmentRepository.class,
                 WarehouseRepository.class
         };
-        String[] packageNames = Arrays.asList(packageClasses)
-                                    .stream()
-                                    .map(c -> getClass().getPackage().getName())
-                                    .collect(Collectors.toList())
-                                    .toArray(new String[packageClasses.length]);
+        String[] packageNames =
+                Arrays.asList(packageClasses)
+                        .stream()
+                        .map( c -> getClass().getPackage().getName())
+                        .collect(Collectors.toList())
+                        .toArray(new String[packageClasses.length]);
         return new SessionFactory(packageNames);
     }
 
