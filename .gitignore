@@ -161,3 +161,4 @@ gradle-app.setting
 *.iml
 .iml
 .idea
+/class
