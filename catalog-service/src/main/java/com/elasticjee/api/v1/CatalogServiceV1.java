@@ -26,7 +26,7 @@ public class CatalogServiceV1 {
         CatalogInfo activeCatalogInfo = catalogInfoRepository.findCatalogInfoByActive(true);
 
         Catalog catalog = restTemplate.getForObject(String.format("http://inventory-service/api/catalogs/search/findCatalogByCatalogNumber?catalogNumber=%s", activeCatalogInfo.getCatalogId()), Catalog.class);
-        ProductResource products = restTemplate.getForObject(String.format("http://inventory-service/api/products/%s/products", catalog.getId()), ProductResource.class);
+        ProductResource products = restTemplate.getForObject(String.format("http://inventory-service/api/catalogs/%s/products", catalog.getId()), ProductResource.class);
 
         catalog.setProducts(products.getContent().stream().collect(Collectors.toSet()));
         return catalog;
