@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: online-store-app
+server:
+  # 先将端口由8787改为8788，便于留出8787供另一应用演示
+  port: 8788
+---
+spring:
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+spring.profiles.active: dev

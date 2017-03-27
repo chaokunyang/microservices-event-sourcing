@@ -29,6 +29,16 @@ public class Shipment {
 
     private ShipmentStatus shipmentStatus;
 
+    public Shipment() {
+    }
+
+    public Shipment(Set<Inventory> inventories, Address deliveryAddress, Warehouse fromWarehouse, ShipmentStatus shipmentStatus) {
+        this.inventories = inventories;
+        this.deliveryAddress = deliveryAddress;
+        this.fromWarehouse = fromWarehouse;
+        this.shipmentStatus = shipmentStatus;
+    }
+
     public Long getId() {
         return id;
     }

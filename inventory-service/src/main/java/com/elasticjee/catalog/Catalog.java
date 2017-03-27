@@ -20,6 +20,14 @@ public class Catalog {
     private List<Product> products = new ArrayList<>();
     private String name;
 
+    public Catalog() {
+    }
+
+    public Catalog(Long catalogNumber, String name) {
+        this.catalogNumber = catalogNumber;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

@@ -18,6 +18,13 @@ public class Warehouse {
     @Relationship(type = "HAS_ADDRESS")
     private Address address;
 
+    public Warehouse() {
+    }
+
+    public Warehouse(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

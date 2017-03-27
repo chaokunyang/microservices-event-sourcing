@@ -24,6 +24,16 @@ public class Inventory {
 
     private InventoryStatus status;
 
+    public Inventory() {
+    }
+
+    public Inventory(String inventoryNumber, Product product, Warehouse warehouse, InventoryStatus status) {
+        this.inventoryNumber = inventoryNumber;
+        this.product = product;
+        this.warehouse = warehouse;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }

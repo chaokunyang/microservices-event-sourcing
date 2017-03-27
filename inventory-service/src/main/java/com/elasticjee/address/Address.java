@@ -18,6 +18,19 @@ public class Address {
     private String street2;
     private Integer zipCode;
 
+    public Address() {
+    }
+
+    public Address(String country, String province, String city, String district, String street1, String street2, Integer zipCode) {
+        this.country = country;
+        this.province = province;
+        this.city = city;
+        this.district = district;
+        this.street1 = street1;
+        this.street2 = street2;
+        this.zipCode = zipCode;
+    }
+
     public Long getId() {
         return id;
     }

@@ -16,6 +16,16 @@ public class Product {
     @Transient
     private Boolean inStock;
 
+    public Product() {
+    }
+
+    public Product(String name, String productId, String description, Double unitPrice) {
+        this.name = name;
+        this.productId = productId;
+        this.description = description;
+        this.unitPrice = unitPrice;
+    }
+
     public Long getId() {
         return id;
     }
