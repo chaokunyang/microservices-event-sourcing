@@ -1,3 +1,6 @@
+#content {
+    margin-top: 5em;
+}
 table caption {
     font-size: 1.5em;
 }
@@ -11,4 +14,14 @@ table caption {
     margin-left: -32px; /* -1 * image width / 2 */
     margin-top: -32px; /* -1 * image height / 2 */
     display: block;
+}
+
+
+.buy-qty, .form-control .buy-qty, .form-inline .form-control {
+    width: 6em;
+}
+
+.alert {
+    margin: 0 0.5em;
+    padding: 6px 12px;
 }

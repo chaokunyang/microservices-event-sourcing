@@ -1,4 +1,16 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<style>
+    @media (min-width: 768px) {
+        #header .navbar-nav {
+            float: right;
+        }
+    }
+    .welcome {
+        display: inline-block;
+        color: #9d9d9d;
+        padding: 15px;
+    }
+</style>
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,12 +21,12 @@
             </button>
             <a class="navbar-brand" href="#">在线商店 timeyang.com</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse" ng-controller="UserCtrl">
             <ul ng-if="user.id != undefined" class="nav navbar-nav">
                 <li class="active">
                     <a href="#">首页</a>
                 </li>
-                <li ng-if="user.id != undefined">欢迎 {{user.firstName}} {{user.lastName}}</li>
+                <li ng-if="user.id != undefined"><span class="welcome">欢迎 {{user.firstName}} {{user.lastName}}</span></li>
                 <li ng-if="user.id != undefined"><a href="/#/orders">订单</a></li>
                 <li ng-if="user.id != undefined"><a href="/#/settings">设置</a></li>
                 <li ng-if="user.id != undefined"><a href="/#/cart"><i class="fa fa-shopping-cart"></i>购物车</a></li>

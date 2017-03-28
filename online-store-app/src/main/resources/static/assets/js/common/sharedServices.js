@@ -1,6 +1,6 @@
 define(['js/app'], function (app) {
     'use strict';
-    app.config(function ($httpProvider) {
+    app.config(['$httpProvider', function ($httpProvider) {
             // responseInterceptors 在1.2.6版本存在，在1.3.8已经不存在了，取而代之的是interceptors。如果继续使用原来的responseInterceptors会报错，导致模块加载失败
             $httpProvider.interceptors.push('httpInterceptor');
             var loading = function (data, headersGetter) {
@@ -8,17 +8,26 @@ define(['js/app'], function (app) {
                 return data;
             };
             $httpProvider.defaults.transformRequest.push(loading);
-        })
-        .factory('httpInterceptor', function ($q, $window) {
-            return function (promise) {
-                return promise.then(function (response) {
+        }])
+        .factory('httpInterceptor', ['$q', function ($q) {
+            return {
+                request: function (req) {
+                    $('#loading').show();
+                    return req;
+                },
+                requestError: function (rejection) {
                     $('#loading').hide();
-                    return response;
-                }, function (error) {
+                    return $q.reject(rejection);
+                },
+                response: function (res) {
                     $('#loading').hide();
-                    return $q.reject(error);
-                })
+                    return res;
+                },
+                responseError: function (rejection) {
+                    $('#loading').hide();
+                    return rejection;
+                }
             }
-        })
+        }])
 
 });

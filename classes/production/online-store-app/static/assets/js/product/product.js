@@ -1,91 +1,58 @@
-define('js/app', function (app) {
-    app.register.controller('ProductListCtrl', ['$scope', '$http', '$templateCache',
-        function ($scope, $http, $templateCache) {
-            $scope.url = '/api/catalog/v1/catalog';
-            $scope.products = [];
+define(['js/app'], function (app) {
+    'use strict';
+    // console.log(app);
+    app.register.controller('ProductListCtrl', ['$scope', '$http', '$templateCache', 'toaster', 'Product', function ($scope, $http, $templateCache, toaster, Product) {
+        $scope.products = [];
+        var fetchProducts = function () {
+            Product.getCatalog(function (catalog) {
+                $scope.products = catalog.products;
+            });
+        };
+        fetchProducts();
+    }]);
 
-            var fetchProducts = function () {
-                $http({
-                    method: 'GET',
-                    url: $scope.url,
-                    cache: $templateCache
-                }).success(function (data) {
-                    $scope.products = data.products;
-                }).error(function (data, status, headers, config) {
-                });
-            };
-
-            fetchProducts();
-        }]);
-    app.register.controller('AddToCartCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.qty = 0;
+    app.register.controller('AddToCartCtrl', ['$scope', '$http', 'Cart', 'toaster', '$timeout', function ($scope, $http, Cart, toaster, $timeout) {
         $scope.productId = "";
+        $scope.qty = 0;
+
         $scope.addToCart = function () {
             if ($scope.qty && $scope.qty > 0) {
-                var req = {
-                    method: 'POST',
-                    url: '/api/shoppingcart/v1/events',
-                    headers: {
-                        'Content-Type': "application/json"
-                    },
-                    data: {
-                        "cartEventType": "ADD_ITEM",
-                        "productId": $scope.product.productId,
-                        "quantity": $scope.qty
-                    }
+                var cartEvent = {
+                    'cartEventType': 'ADD_ITEM',
+                    'productId': $scope.productId,
+                    'quantity': $scope.qty
                 };
-
-                $http(req).then(function () {
+                Cart.addCartEvent({}, cartEvent, function (res) {
                     $scope.qty = 0;
                     function showAlert() {
-                        $("#addProductAlert").addClass("in");
+                        $("#addToCartAlert").addClass("in");
                     }
-
                     function hideAlert() {
-                        $("#addProductAlert").removeClass("in");
+                        $("#addToCartAlert").removeClass("in");
                     }
-
-                    window.setTimeout(function () {
+                    $timeout(function () {
                         showAlert();
-                        window.setTimeout(function () {
-                            hideAlert();
-                        }, 2000);
-                    }, 20);
+                        $timeout(function () {
+                            hideAlert()
+                        }, 2000, false); // false表示跳过 model dirty checking
+                    }, 20, false)
+                }, function (error) {
+                    toaster.pop('error', '添加商品到购物车失败', error);
                 });
             }
         };
     }]);
-    app.register.controller('ProductItemCtrl', ['$scope', '$routeParams', '$http',
-        function ($scope, $routeParams, $http) {
-            $scope.productItemUrl = '/api/catalog/v1/products/' + $routeParams.productId;
-            $scope.productsUrl = '/api/catalog/v1/catalog';
-            $scope.products = [];
 
-            $scope.$on('logout', function (event, msg) {
-                fetchProduct();
+    app.register.controller('ProductItemCtrl', ['$scope', '$http', '$templateCache', 'toaster', '$stateParams', 'Product', function ($scope, $http, $templateCache, toaster, $stateParams, Product) {
+        $scope.productItemUrl = 'api/catalog/v1/products/' + $stateParams.productId;
+        var fetchProduct = function () {
+            Product.getProductByProductId({productId: $stateParams.productId}, function (product) {
+                $scope.product = product;
+            }, function (error) {
+                toaster.pop('error', '获取产品信息失败', error);
             });
+        };
+        fetchProduct();
+    }]);
 
-            var fetchProduct = function () {
-
-                $http({
-                    method: 'GET',
-                    url: $scope.productsUrl
-                }).success(function (data, status, headers, config) {
-                    $scope.products = data.products;
-                }).error(function (data, status, headers, config) {
-                });
-
-                $http({
-                    method: 'GET',
-                    url: $scope.productItemUrl
-                }).success(function (data, status, headers, config) {
-                    $scope.product = data;
-                    $scope.product.poster_image = '/assets/img/posters/' + $scope.product.productId + '.png';
-
-                }).error(function (data, status, headers, config) {
-                });
-            };
-
-            fetchProduct();
-        }]);
 });

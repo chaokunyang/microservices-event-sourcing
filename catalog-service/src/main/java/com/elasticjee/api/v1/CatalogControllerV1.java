@@ -28,7 +28,7 @@ public class CatalogControllerV1 {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @RequestMapping(value = "/products/{productIs}", method = RequestMethod.GET, name = "getProduct")
+    @RequestMapping(value = "/products/{productId}", method = RequestMethod.GET, name = "getProduct")
     public ResponseEntity<Product> getProduct(@PathVariable("productId") String productId) {
         return Optional.ofNullable(catalogService.getProduct(productId))
                 .map(result -> new ResponseEntity<>(result, HttpStatus.OK))

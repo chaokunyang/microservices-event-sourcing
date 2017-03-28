@@ -18,6 +18,15 @@ define(['angular-resource'], function () {
         })
     }]);
 
+    app.factory('Cart', ['$resource', function ($resource) {
+        return $resource('/api/shoppingcart/v1/events', {}, {
+            addCartEvent: {
+                url: '/api/shoppingcart/v1/events',
+                method: 'POST'
+            }
+        })
+    }]);
+
     app.factory('orderService', function () {
         var completedOrder = {};
 

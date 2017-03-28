@@ -17,7 +17,8 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
             .state('ProductItem', angularAMD.route({
                 url: '/product/:productId',
                 templateUrl: 'assets/views/product/product-detail.html',
-                controllerUrl: 'js/product/ProductItemCtrl'
+                controller: 'ProductItemCtrl',
+                controllerUrl: 'js/product/product'
             }))
             .state('cart', angularAMD.route({
                 url: '/cart',
@@ -40,6 +41,6 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
         };
     }]);
 
-    angularAMD.bootstrap(app);
+    // angularAMD.bootstrap(app); // 不要在这里启动app，因为这样会直接开始渲染页面，而某些controller、filter、config等此时可能还没有从服务器获取下来或者还没有加载完成(即app.controller、app.config等还没有执行完毕)，这时加载就会报错或者功能不全，应该在main.js里面的require语句里面加载完所有的依赖后，在回调函数里面启动app：angularAMD.bootstrap(app)
     return app;
 });
