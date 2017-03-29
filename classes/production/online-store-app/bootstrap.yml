@@ -3,7 +3,7 @@ spring:
     name: online-store-app
 server:
   # 先将端口由8787改为8788，便于留出8787供另一应用演示
-  port: 8788
+  port: 8787
 ---
 spring:
   profiles: default

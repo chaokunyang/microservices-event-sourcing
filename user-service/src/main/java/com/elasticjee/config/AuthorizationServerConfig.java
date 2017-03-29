@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 /**
  * @author yangck
@@ -42,6 +43,8 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll()
                 .and().csrf().disable();
+                //.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()); // 使用angularjs并且开启csrf保护的话就需要配置该行代码。需要注意withHttpOnlyFalse后容易受到XSS攻击
+
     }
 
     @Configuration

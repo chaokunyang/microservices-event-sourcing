@@ -1,33 +1,33 @@
-define('js/app', function (app) {
-    app.register.controller('CartCtrl', ['$scope', '$http', '$templateCache',
-        function ($scope, $http) {
-            $scope.url = '/api/shoppingcart/v1/cart';
-            $scope.cart = {};
-
-            $scope.$on('cartEvents', function (event, msg) {
-                fetchCart();
-            });
-
-            var fetchCart = function () {
-                $http({
-                    method: 'GET',
-                    url: $scope.url
-                }).success(function (data) {
-                    $scope.cart = data;
-                    $scope.cart.total = 0;
-                    $scope.cart.totalItems = 0;
-                    for (var i = 0; i < $scope.cart.lineItems.length; i++) {
-                        $scope.cart.lineItems[i].posterImage = '/assets/img/posters/' + $scope.cart.lineItems[i].product.productId + '.png';
-                        $scope.cart.lineItems[i].originalQuantity = $scope.cart.lineItems[i].quantity;
-                        $scope.cart.total += $scope.cart.lineItems[i].quantity * $scope.cart.lineItems[i].product.unitPrice;
-                        $scope.cart.totalItems += $scope.cart.lineItems[i].quantity;
-                    }
-                }).error(function (data, status, headers, config) {
-                });
-            };
-
+define(['js/app'], function (app) {
+    'use strict';
+    // console.log(app);
+    app.register.controller('CartCtrl', ['$scope', '$http', '$templateCache', function ($scope, $http) {
+        var url = '/api/shoppingcart/v1/cart';
+        $scope.cart = {};
+        
+        $scope.$on('cartEvents', function (event, msg) {
             fetchCart();
-        }]);
+        });
+        
+        var fetchCart = function () {
+            $http.get(url).success(function (data) {
+                $scope.cart = data;
+                $scope.cart.total = 0;
+                $scope.cart.totalItems = 0;
+
+                for(var i = 0; i < $scope.cart.cartItems.length; i++) {
+                    var cartItem = $scope.cart.cartItems[i];
+                   cartItem.product.originalQuantity = cartItem.product.quantity;
+                    $scope.cart.total += cartItem.quantity;
+                    $scope.cart.total += cartItem.quantity * cartItem.product.unitPrice;
+                }
+            }).error(function (error) {
+            });
+        }
+
+        fetchCart()
+    }]);
+
     app.register.controller('CheckoutCtrl', ['$scope', '$http', '$location', 'orderService', function ($scope, $http, $location, orderService) {
         $scope.checkout = function () {
             var req = {
@@ -53,6 +53,7 @@ define('js/app', function (app) {
             });
         };
     }]);
+
     app.register.controller('UpdateCartCtrl', ['$rootScope', '$scope', '$http', '$location', function ($rootScope, $scope, $http, $location) {
         $scope.productId = "";
 
@@ -123,4 +124,5 @@ define('js/app', function (app) {
             }
         };
     }]);
+
 });

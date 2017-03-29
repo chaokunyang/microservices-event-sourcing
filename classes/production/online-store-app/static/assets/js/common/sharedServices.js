@@ -21,6 +21,12 @@ define(['js/app'], function (app) {
                 },
                 response: function (res) {
                     $('#loading').hide();
+                    // console.log(res.headers());
+                    if(res.headers()['authenticated']) {
+                        sessionStorage.setItem("authenticated", true);
+                    }else {
+                        sessionStorage.removeItem("authenticated");
+                    }
                     return res;
                 },
                 responseError: function (rejection) {

@@ -1,4 +1,6 @@
-define('js/app', function (app) {
+define(['js/app'], function (app) {
+    'use strict';
+    // console.log(app);
     app.register.controller('OrderListCtrl', ['$scope', '$http', '$location', 'orderService', '$routeParams',
         function ($scope, $http, $location, orderService, $routeParams) {
             // Get account

@@ -12,17 +12,17 @@ define(['js/app'], function (app) {
     }]);
 
     app.register.controller('AddToCartCtrl', ['$scope', '$http', 'Cart', 'toaster', '$timeout', function ($scope, $http, Cart, toaster, $timeout) {
-        $scope.productId = "";
         $scope.qty = 0;
 
         $scope.addToCart = function () {
             if ($scope.qty && $scope.qty > 0) {
                 var cartEvent = {
                     'cartEventType': 'ADD_ITEM',
-                    'productId': $scope.productId,
+                    'productId': $scope.product.productId, // 访问parent scope 的属性
                     'quantity': $scope.qty
                 };
                 Cart.addCartEvent({}, cartEvent, function (res) {
+                    console.log(res);
                     $scope.qty = 0;
                     function showAlert() {
                         $("#addToCartAlert").addClass("in");

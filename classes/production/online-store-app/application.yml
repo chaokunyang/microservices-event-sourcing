@@ -12,7 +12,8 @@ zuul:
       path: /user/**
       url: http://localhost:8181/auth/user
 security:
-  enable-csrf: false
+# 安全起见，应该启用csrf保护。因为前端使用的是angularjs，所有需要在WebSecurityConfigurer.configure方法(即OnlineStoreApplication.configure方法)里面配置CookieCsrfTokenRepository
+#  enable-csrf: false
   oauth2:
     resource:
       # to complete the authentication it needs to know where the user info endpoint is in user-service
@@ -23,10 +24,11 @@ security:
       clientSecret: elasticjeesecret
       accessTokenUri: http://localhost:8181/auth/oauth/token
       userAuthorizationUri: http://localhost:8181/auth/oauth/authorize
-  ignored: /assets/**
+# 忽略的资源在WebSecurityConfigurer.configure方法里面配置，即OnlineStoreApplication.configure方法。因为在这里配置不够灵活
+#  ignored: /assets/**
 eureka:
   instance:
-    non-secure-port: 8787
+    non-secure-port: ${server.port}
     prefer-ip-address: true
   client:
     registerWithEureka: true

@@ -18,42 +18,38 @@ define(['js/app'], function (app) {
         fetchAccounts();
     }]);
 
-    app.controller('UserCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.authUrl = '/api/user/auth/v1/me';
+    app.controller('UserCtrl', ['$scope', '$http', 'toaster', '$rootScope', '$location', function ($scope, $http, toaster, $rootScope, $location) {
         $scope.meUrl = '/api/user/auth/v1/me';
         $scope.user = {};
+
+        var fetchUser = function () {
+            // $http.get($scope.meUrl).success....
+            $http({
+                method: 'GET',
+                url: $scope.meUrl
+            }).success(function (data, status, headers, config) {
+                $scope.user = data;
+            }).error(function (data, status, headers, config) {
+                toaster.pop('error', '获取用户信息失败', data);
+            });
+        };
+
+        // 未登录无法获取用户信息，直接获取的话会重定向的Oauth2.0认证服务器登录页，从而得到的结果是登录页面HTML代码。而且这是两个url不同域（CORS），Oauth2.0认证服务器登录页并没有添加 Access-Control-Allow-Origin: http://localhost:8788，因此http://localhost:8787 并不能够获取到Oauth2.0认证服务器登录页html代码。
+        if(sessionStorage.getItem("authenticated")) {
+            fetchUser();
+        }
 
         $scope.logout = function () {
             $http.post('logout', {}).success(function () {
                 $rootScope.authenticated = false;
                 $scope.user = {};
                 $location.path("/");
-                $location.reload($location.path);
                 $rootScope.$broadcast('logout', "update");
             }).error(function (data) {
+                console.log("Logout failed")
                 $scope.user = {};
                 $rootScope.$broadcast('logout', "update");
             });
         };
-
-        var fetchUser = function () {
-            $http({
-                method: 'GET',
-                url: $scope.authUrl
-            }).success(function (data, status, headers, config) {
-                $http({
-                    method: 'GET',
-                    url: $scope.meUrl
-                }).success(function (data, status, headers, config) {
-                    $scope.user = data;
-                }).error(function (data, status, headers, config) {
-                });
-                $scope.user = data;
-            }).error(function (data, status, headers, config) {
-                $scope.user = {};
-            });
-        };
-
-        fetchUser();
     }]);
 });

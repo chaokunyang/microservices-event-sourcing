@@ -1,6 +1,8 @@
 spring:
   application:
     name: account-service
+server:
+  port: 0
 ---
 spring:
   # 没有其他profile激活时会使用它

@@ -12,7 +12,7 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
             .state('user', angularAMD.route({
                 url: '/user',
                 templateUrl: 'assets/views/user/user.html',
-                controllerUrl: 'assets/js/user/user'
+                controllerUrl: 'js/user/user'
             }))
             .state('ProductItem', angularAMD.route({
                 url: '/product/:productId',
@@ -23,12 +23,13 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
             .state('cart', angularAMD.route({
                 url: '/cart',
                 templateUrl: 'assets/views/cart/cart.html',
-                controllerUrl: 'assets/js/cart/cart'
+                controller: 'CartCtrl',
+                controllerUrl: 'js/cart/cart'
             }))
             .state('order', angularAMD.route({
                 url: '/order',
                 templateUrl: 'assets/views/order.html',
-                controllerUrl: 'assets/js/order/order'
+                controllerUrl: 'js/order/order'
             }));
 
         // Else

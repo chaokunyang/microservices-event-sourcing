@@ -51,7 +51,8 @@ public class ShoppingCartServiceV1 {
      * @return 当前验证的用户
      */
     public User getAuthenticatedUser() {
-        return oAuth2RestTemplate.getForObject("http://user-service/v1/me", User.class);
+        //System.out.println(oAuth2RestTemplate.getForObject("http://user-service/auth/v1/me", User.class));
+        return oAuth2RestTemplate.getForObject("http://user-service/auth/v1/me", User.class);
     }
 
     /**
@@ -87,10 +88,10 @@ public class ShoppingCartServiceV1 {
      * @throws Exception
      */
     public ShoppingCart getShoppingCart() throws Exception {
-        User user = oAuth2RestTemplate.getForObject("http://user-service/v1/me", User.class);
+        User user = oAuth2RestTemplate.getForObject("http://user-service/auth/v1/me", User.class);
         ShoppingCart shoppingCart = null;
         if(user != null) {
-            Catalog catalog = restTemplate.getForObject("http://catalog-service/v1/me", Catalog.class);
+            Catalog catalog = restTemplate.getForObject("http://catalog-service/v1/catalog", Catalog.class);
             shoppingCart = aggregateCartEvents(user, catalog);
         }
         return shoppingCart;
@@ -169,7 +170,7 @@ public class ShoppingCartServiceV1 {
 
                         checkOutResult.setOrder(order);
 
-                        User user = oAuth2RestTemplate.getForObject("http://user-service/v1/me", User.class);
+                        User user = oAuth2RestTemplate.getForObject("http://user-service/auth/v1/me", User.class);
 
                         // 增加CartEventType.CHECKOUT事件，清除购物车，因为已经生成订单成功
                         addCartEvent(new CartEvent(CartEventType.CHECKOUT, user.getId()), user);

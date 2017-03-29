@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
- * 网关服务
- *
+ * 网关服务<br/>
+ * OAuth2 Resource Servers, use a Spring Security filter that authenticates requests <strong>via an incoming OAuth2 token.</strong>
  * @author chaokunyang
  */
 @SpringBootApplication
