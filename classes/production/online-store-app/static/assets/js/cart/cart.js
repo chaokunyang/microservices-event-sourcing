@@ -17,7 +17,7 @@ define(['js/app'], function (app) {
 
                 for(var i = 0; i < $scope.cart.cartItems.length; i++) {
                     var cartItem = $scope.cart.cartItems[i];
-                   cartItem.product.originalQuantity = cartItem.product.quantity;
+                    cartItem.product.originalQuantity = cartItem.product.quantity;
                     $scope.cart.total += cartItem.quantity;
                     $scope.cart.total += cartItem.quantity * cartItem.product.unitPrice;
                 }

@@ -15,7 +15,7 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
                 controllerUrl: 'js/user/user'
             }))
             .state('ProductItem', angularAMD.route({
-                url: '/product/:productId',
+                url: '/products/:productId',
                 templateUrl: 'assets/views/product/product-detail.html',
                 controller: 'ProductItemCtrl',
                 controllerUrl: 'js/product/product'

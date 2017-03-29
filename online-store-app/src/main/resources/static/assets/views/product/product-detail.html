@@ -22,7 +22,7 @@
                 <div>产品名：</div>
                 <div><span ng-bind="product.name"></span></div>
                 <div>价格：</div>
-                <div><span ng-bind="product.unitPrice"></span></div>
+                <div><span ng-bind="product.unitPrice | currency:'￥'"></span></div>
             </div>
         </div>
         <div class="col-md-8 col-sm-8">
