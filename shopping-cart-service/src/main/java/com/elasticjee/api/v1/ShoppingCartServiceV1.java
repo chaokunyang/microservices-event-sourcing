@@ -112,7 +112,7 @@ public class ShoppingCartServiceV1 {
                 .reduceWith(() -> new ShoppingCart(catalog), ShoppingCart::incorporate)
                 .get();
 
-        shoppingCart.generateCartItemsAndGet();
+        shoppingCart.getCartItems();
         return shoppingCart;
     }
 
@@ -135,7 +135,7 @@ public class ShoppingCartServiceV1 {
 
         if(currentCart != null) {
             // 协调当前购物车与库存
-            Inventory[] inventory = oAuth2RestTemplate.getForObject(String.format("http://inventory-service/v1/inventory?productIds=%s", currentCart.generateCartItemsAndGet()
+            Inventory[] inventory = oAuth2RestTemplate.getForObject(String.format("http://inventory-service/v1/inventory?productIds=%s", currentCart.getCartItems()
                     .stream()
                     .map(CartItem::getProductId)
                     .collect(Collectors.joining(","))), Inventory[].class);
@@ -152,7 +152,7 @@ public class ShoppingCartServiceV1 {
 
                     // 创建订单
                     Order order = oAuth2RestTemplate.postForObject("http://order-service/v1/orders",
-                            currentCart.generateCartItemsAndGet()
+                            currentCart.getCartItems()
                                     .stream()
                                     .map(cartItem -> new OrderItem(cartItem.getProduct().getName(), cartItem.getProductId(),
                                             cartItem.getQuantity(), cartItem.getProduct().getUnitPrice(), TAX))
@@ -194,7 +194,7 @@ public class ShoppingCartServiceV1 {
         Boolean hasInventory = true;
         // 判断库存是否可用
         try {
-            List<CartItem> inventoryUnAvailableCartItems = currentCart.generateCartItemsAndGet()
+            List<CartItem> inventoryUnAvailableCartItems = currentCart.getCartItems()
                     .stream()
                     .filter(item -> inventoryItems.get(item.getProductId()) - item.getQuantity() < 0)
                     .collect(Collectors.toList());
