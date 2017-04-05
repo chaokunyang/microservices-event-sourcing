@@ -162,3 +162,5 @@ gradle-app.setting
 .iml
 .idea
 /class
+/classes
+/**/build/

@@ -38,7 +38,6 @@ grant all privileges on time_online_store.* to 'time_store_user'@'127.0.0.1' ide
 grant all privileges on time_online_store.* to 'time_store_user'@'::1' identified by '123456'; 
 flush privileges;
 ```
-插入数据：
 
 2、安装neo4j 2.3 并修改默认密码为secret
 ``` shell
