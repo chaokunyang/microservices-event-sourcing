@@ -25,6 +25,17 @@ public class Address extends BaseEntity {
     public Address() {
     }
 
+    public Address(String country, String province, String city, String district, String street1, String street2, Integer zipCode, AddressType addressType) {
+        this.country = country;
+        this.province = province;
+        this.city = city;
+        this.district = district;
+        this.street1 = street1;
+        this.street2 = street2;
+        this.zipCode = zipCode;
+        this.addressType = addressType;
+    }
+
     public Long getId() {
         return id;
     }

@@ -16,7 +16,7 @@
         </thead>
         <tbody><a href="index.html#/products/' + products[i].productId + '"></a>
         <tr ng-repeat="product in products">
-            <td><a ng-href="#product/{{product.productId}}"><span ng-bind="product.productId"></span></a></td>
+            <td><a ng-href="#products/{{product.productId}}"><span ng-bind="product.productId"></span></a></td>
             <td><span ng-bind="product.name"></span></td>
             <td><span ng-bind-html="product.description | rawHtml"></span></td>
             <td><span ng-bind="product.unitPrice"></span></td>

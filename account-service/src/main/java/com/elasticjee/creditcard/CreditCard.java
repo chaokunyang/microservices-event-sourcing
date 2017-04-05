@@ -18,6 +18,11 @@ public class CreditCard extends BaseEntity {
     public CreditCard() {
     }
 
+    public CreditCard(String number, CreditCardType type) {
+        this.number = number;
+        this.type = type;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {

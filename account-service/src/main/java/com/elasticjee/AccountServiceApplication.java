@@ -1,5 +1,7 @@
 package com.elasticjee;
 
+import com.elasticjee.config.DatabaseInitializer;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -7,6 +9,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
@@ -44,5 +47,14 @@ public class AccountServiceApplication {
         public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
             config.setBasePath("/api");
         }
+    }
+
+    @Bean
+    @Profile("dev")
+    CommandLineRunner commandLineRunner(DatabaseInitializer databaseInitializer) {
+        return args -> {
+            // Initialize the database for end to end integration testing
+            databaseInitializer.populate();
+        };
     }
  }
