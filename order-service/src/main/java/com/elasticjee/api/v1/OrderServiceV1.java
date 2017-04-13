@@ -49,7 +49,7 @@ public class OrderServiceV1 {
                 defaultAccount.getAddresses().stream()
                         .filter(address -> address.getAddressType() == AddressType.SHIPPING)
                         .findFirst()
-                        .orElseThrow(() -> new RuntimeException("默认账户没有配送地址")));
+                        .orElseThrow(() -> new RuntimeException("默认账户没有收货地址")));
         newOrder.setOrderItems(orderItems);
         newOrder = orderRepositroy.save(newOrder);
 

@@ -102,7 +102,7 @@ public class ShoppingCartServiceV1 {
      * @param user 获取购物车的用户
      * @param catalog 用于生成购物车的目录
      * @return 一个表示用户购物车聚合状态的购物车
-     * @throws Exception 如果在购物车中的一个商品不在目录里面，则抛出异常
+     * @throws Exception 如果在购物车中的一个产品不在目录里面，则抛出异常
      */
     public ShoppingCart aggregateCartEvents(User user, Catalog catalog) throws Exception {
         Flux<CartEvent> cartEvents = Flux.fromStream(cartEventRepository.getCartEventStreamByUserId(user.getId()));
@@ -205,8 +205,8 @@ public class ShoppingCartServiceV1 {
                         .map(CartItem::getProductId)
                         .collect(Collectors.joining(", "));
                 checkOutResult.setResultMessage(
-                        String.format("以下商品没有充足的库存可用：%s. " +
-                            "请降低这些商品的数量再次尝试.", productIds));
+                        String.format("以下产品没有充足的库存可用：%s. " +
+                            "请降低这些产品的数量再次尝试.", productIds));
                 hasInventory = false;
             }
         } catch (Exception e) {

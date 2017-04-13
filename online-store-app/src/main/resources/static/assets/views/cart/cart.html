@@ -5,53 +5,56 @@
     .checkout-summary > div > * {
         display: inline-block;
     }
+    .updateProductAlert {
+        display: inline-block;
+    }
 </style>
-<div class="panel panel-default">
-    <div class="panel-heading">购物车</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">购物车</div>
 
-    <ul class="list-group">
-        <li class="list-group-item" ng-if="cart.cartItems.length == 0">你的购物车是空的</li>
-        <li class="list-group-item" ng-repeat="item in cart.cartItems">
-            <div class="row">
-                <div class="col-md-2 col-xs-2 cart-item-image">
-                    <div class="thumbnail">
-                        <a ng-href="index.html#/products/{{item.product.productId}}">
-                            <img ng-src="item.product.pictureUrl" alt="{{item.product.name}}">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4 cart-item-description">
-                    <div><label>商品名字:</label><span ng-bind="item.product.name"></span></div>
-                    <div><label>商品编号:</label><span ng-bind="item.product.productId"></span></div>
-                </div>
-                <div class="col-md-3 col-xs-3 cart-item-price">
-                    <lable>单价:</lable><span ng-bind="item.product.unitPrice | currency:'￥'"></span>
-                </div>
-                <div class="col-md-3 col-xs-3 cart-item-qty">
-                    <form class="form-inline" ng-submit="updateCart()" ng-controller="UpdateCartCtrl">
-                        <div class="form-group">
-                            <input type="text" class="form-control buy-qty" ng-model="item.quantity" placeholder="购买数量">
+        <ul class="list-group">
+            <li class="list-group-item" ng-if="cart.cartItems.length == 0">你的购物车是空的</li>
+            <li class="list-group-item" ng-repeat="item in cart.cartItems">
+                <div class="row">
+                    <div class="col-md-2 col-xs-2 cart-item-image">
+                        <div class="thumbnail">
+                            <a ng-href="index.html#/products/{{item.product.productId}}">
+                                <img ng-src="/assets/img/travels/{{item.product.productId}}.jpg" alt="{{item.product.name}}">
+                            </a>
                         </div>
-                        <button type="submit" class="btn btn-primary">更新</button>
-                        <div>
-                            <div id="updateProductAlert" class="alert alert-success fade" role="alert">
+                    </div>
+                    <div class="col-xs-4 col-md-4 cart-item-description">
+                        <div><label>产品名字:</label><span ng-bind="item.product.name"></span></div>
+                        <div><label>产品编号:</label><span ng-bind="item.product.productId"></span></div>
+                    </div>
+                    <div class="col-md-3 col-xs-3 cart-item-price">
+                        <lable>单价:</lable><span ng-bind="item.product.unitPrice | currency:'￥'"></span>
+                    </div>
+                    <div class="col-md-3 col-xs-3 cart-item-qty">
+                        <form class="form-inline" ng-submit="updateCart()" ng-controller="UpdateCartCtrl">
+                            <div class="form-group">
+                                <input type="number" min="0" class="form-control buy-qty" ng-model="item.quantity" placeholder="购买数量">
+                            </div>
+                            <button type="submit" class="btn btn-primary">更新</button>
+                            <div id="updateProductAlert-{{item.productId}}" class="alert alert-success fade updateProductAlert" role="alert">
                                 <p>更新成功!</p>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="panel-body" ng-if="cart.cartItems.length > 0">
+            <div class="checkout-summary">
+                <div><label>产品总数:</label><span ng-bind="cart.totalItems"></span></div>
+                <div><label>产品总金额:</label><span ng-bind="cart.total | currency:'￥'"></span></div>
+                <div>
+                    <form ng-submit="checkout()" ng-controller="CheckoutCtrl">
+                        <button type="submit" class="btn btn-primary">检出购物车</button>
                     </form>
                 </div>
-            </div>
-        </li>
-    </ul>
-
-    <div class="panel-body" ng-if="cart.cartItems.length > 0">
-        <div class="checkout-summary">
-            <div><label>商品总数:</label><span ng-bind="cart.totalItems"></span></div>
-            <div><label>商品总金额:</label><span ng-bind="cart.total | currency:'￥'"></span></div>
-            <div>
-                <form ng-submit="checkout()" ng-controller="CheckoutCtrl">
-                    <button type="submit" class="btn btn-primary">检出购物车</button>
-                </form>
             </div>
         </div>
     </div>

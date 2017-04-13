@@ -75,13 +75,13 @@ public class DatabaseInitializer {
         warehouse = warehouseRepository.save(warehouse);
         Warehouse finalWarehouse = warehouse;
 
-        // 创建一个有着随机库存的库存集合
+        // 创建一个有着随机库存编号的库存集合。即为每个产品生成一个产品数量为1的库存，有着随机库存编号
         Random random = new Random();
         Set<Inventory> inventories = products.stream()
                 .map(product -> new Inventory(IntStream.range(0, 9).mapToObj(i -> Integer.toString(random.nextInt(9))).collect(Collectors.joining("")), product, finalWarehouse, InventoryStatus.IN_STOCK)).collect(Collectors.toSet());
         inventoryRepository.save(inventories);
 
-        // 为每个产品生成10个额外库存
+        // 为每个产品生成10个额外库存。因为一个库存代表一个数量为1的产品，所以每个产品将有10个库存
         for(int i = 0; i < 10; i++) {
             inventoryRepository.save(products.stream().map(product -> new Inventory(IntStream.range(0, 9).mapToObj(x -> Integer.toString(random.nextInt(9))).collect(Collectors.joining("")), product, finalWarehouse, InventoryStatus.IN_STOCK)).collect(Collectors.toSet()));
         }

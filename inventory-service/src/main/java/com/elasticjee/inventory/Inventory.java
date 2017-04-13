@@ -7,6 +7,8 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 /**
+ * 库存<br/>
+ * 每个库存代表的产品数量为1。有多少个库存状态为IN_STOCK的库存，就有多少个产品有库存
  * @author chaokunyang
  */
 @NodeEntity

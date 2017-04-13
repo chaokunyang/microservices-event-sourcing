@@ -37,7 +37,7 @@ define(['js/app'], function (app) {
                         }, 2000, false); // false表示跳过 model dirty checking
                     }, 20, false)
                 }, function (error) {
-                    toaster.pop('error', '添加商品到购物车失败', error);
+                    toaster.pop('error', '添加产品到购物车失败', error);
                 });
             }
         };

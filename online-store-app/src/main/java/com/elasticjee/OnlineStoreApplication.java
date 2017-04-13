@@ -3,16 +3,12 @@ package com.elasticjee;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-
-import javax.servlet.DispatcherType;
 
 /**
  * 在线商店
@@ -40,18 +36,18 @@ public class OnlineStoreApplication extends WebSecurityConfigurerAdapter {
                 //.and().csrf().disable(); // 这样虽然可以工作，但不安全
     }
 
-    /**
-     * 使用认证信息过滤器添加是否已认证的相关信息
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean authInfoFilterRegistration() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new AuthInfoFilter());
-        registration.setName("authInfoFilter");
-        registration.setDispatcherTypes(DispatcherType.REQUEST);
-        registration.addUrlPatterns("/*"); // 记住是"/*"，而不是"/**"，后者不会过滤请求
-        registration.setOrder(1);
-        return registration;
-    }
+    ///**
+    // * 使用认证信息过滤器添加是否已认证的相关信息
+    // * @return
+    // */
+    //@Bean
+    //public FilterRegistrationBean authInfoFilterRegistration() {
+    //    FilterRegistrationBean registration = new FilterRegistrationBean();
+    //    registration.setFilter(new AuthInfoFilter());
+    //    registration.setName("authInfoFilter");
+    //    registration.setDispatcherTypes(DispatcherType.REQUEST);
+    //    registration.addUrlPatterns("/*"); // 记住是"/*"，而不是"/**"，后者不会过滤请求
+    //    registration.setOrder(1);
+    //    return registration;
+    //}
 }

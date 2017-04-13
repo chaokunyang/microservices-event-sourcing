@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // classpath 'org.springframework:springloaded:1.2.6.RELEASE' // Modern IDEs (Eclipse, IDEA, etc.) all support hot swapping of bytecode, so if you make a change that doesn’t affect class or method signatures it should reload cleanly with no side effects. Spring Loaded goes a little further in that it can reload class definitions with changes in the method signatures. With some customization it can force an ApplicationContext to refresh itself (but there is no general mechanism to ensure that would be safe for a running application anyway, so it would only ever be a development time trick probably).
     }
 }
 
@@ -47,8 +48,11 @@ subprojects {
             downloadSources = true
             downloadJavadoc = false
             inheritOutputDirs = false
-            outputDir = file("$buildDir/classes/main/")
+            outputDir = file("$buildDir/classes/main/") // By default, IntelliJ IDEA will compile classes into a different location than Gradle, causing Spring Loaded monitoring to fail. 注意，我们这里并没有使用 Spring Loaded
         }
+    }
+    springBoot {
+        executable = true
     }
 }
 

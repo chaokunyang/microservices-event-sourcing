@@ -27,7 +27,7 @@ public class ShoppingCart {
     /**
      * 从购物车事件的聚合(aggregate)生成并得到cart items
      * @return 代表购物车状态的一个新的 {@link CartItem} list
-     * @throws Exception 如果在购物车中的一个商品不在目录里面，则抛出异常
+     * @throws Exception 如果在购物车中的一个产品不在目录里面，则抛出异常
      */
     public List<CartItem> getCartItems() throws Exception {
         cartItems = productMap.entrySet().stream()
@@ -39,7 +39,7 @@ public class ShoppingCart {
                 .collect(Collectors.toList());
 
         if(cartItems.stream().anyMatch(item -> item.getProduct() == null))
-            throw new Exception("没有在目录里找到商品");
+            throw new Exception("没有在目录里找到产品");
 
         return cartItems;
     }
@@ -60,7 +60,7 @@ public class ShoppingCart {
         // CartEvent类型必须是 ADD_ITEM or REMOVE_ITEM
         if(validCartEventTypes.exists(cartEventType ->
                 cartEvent.getCartEventType().equals(cartEventType)).get()) {
-            // 根据事件类型更新购物车每个商品的数量的聚合
+            // 根据事件类型更新购物车每个产品的数量的聚合
             productMap.put(cartEvent.getProductId(),
                     productMap.getOrDefault(cartEvent.getProductId(), 0) +
                             (cartEvent.getQuantity() * (cartEvent.getCartEventType()

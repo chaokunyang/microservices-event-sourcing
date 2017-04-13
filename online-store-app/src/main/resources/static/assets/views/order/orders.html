@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<style>
+</style>
+<div id="orders" class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-home"></i> 订单列表
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-if="orders.length == 0">你的购买历史将在你的第一次购物车检出后显示在这里</li>
+            </li>
+        </ul>
+        <table class="table" ng-if="orders.length > 0">
+            <thead>
+            <tr>
+                <th>订单</th>
+                <th>状态</th>
+                <th>日期</th>
+                <th>金额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in orders">
+                <td>
+                    <a href="/#/orders/{{order.orderId}}"><span ng-bind="order.orderId"></span></a>
+                </td>
+                <td><span ng-bind="order.orderStatus"></span></td>
+                <td><span ng-bind="order.createdAt | date:'MM/dd/yyyy'"></span></td>
+                <td><span ng-bind="order.total | currency:'￥'"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

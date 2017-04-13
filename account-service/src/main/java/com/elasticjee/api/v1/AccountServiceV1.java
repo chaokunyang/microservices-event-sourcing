@@ -23,7 +23,7 @@ public class AccountServiceV1 {
         List<Account> accounts = null;
         User user = oAuth2RestTemplate.getForObject("http://user-service/auth/v1/me", User.class);
         if(user != null) {
-            accounts = accountRepository.findAccountsByUserId(user.getId());
+            accounts = accountRepository.findAccountsByUserId(user.getUsername()); // 用户名作为userId是合理的，因为登录时使用的用户名是唯一的
         }
 
         // 掩盖信用卡除最后四位以外的数字

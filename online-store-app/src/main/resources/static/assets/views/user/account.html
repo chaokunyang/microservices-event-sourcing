@@ -1,10 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<style>
+    #accounts .account-settings .panel-body > div {
+        padding: 10px 15px;
+    }
+    #accounts .account-settings .panel-body > div > span:first-child {
+        display: inline-block;
+        width: 7%;
+    }
 
-</body>
-</html>
+    #accounts .credit-card ul li > div {
+        padding: 10px 15px;
+    }
+    #accounts .credit-card ul li > div > span:first-child {
+        display: inline-block;
+        width: 8%;
+    }
+
+    #accounts .address ul li > div {
+        padding: 10px 15px;
+    }
+    #accounts .address ul li > div > span:first-child {
+        display: inline-block;
+        width: 4%;
+    }
+</style>
+<div id="accounts" class="container">
+    <div ng-repeat="account in accounts" class="account">
+        <div class="account-settings panel panel-default">
+            <div class="panel-heading"><i class="fa fa-cog"></i> 账户设置</div>
+            <div class="panel-body">
+                <div>
+                    <span>用户名：</span>
+                    <span ng-bind="account.userId"></span>
+                </div>
+                <div>
+                    <span>账号：</span>
+                    <span ng-bind="account.accountNumber"></span>
+                </div>
+                <div>
+                    <span>默认账户：</span>
+                    <span ng-bind="account.defaultAccount ? '是' : '否'"></span>
+                </div>
+                <div>
+                    <span>用户名：</span>
+                    <span ng-bind="account.userId"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default credit-card">
+            <div class="panel-heading"><i class="fa fa-credit-card"></i> 信用卡</div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="creditCard in account.creditCards">
+                    <div>
+                        <span>信用卡号：</span>
+                        <span ng-bind="creditCard.number"></span>
+                    </div>
+                    <div>
+                        <span>信用卡类型：</span>
+                        <span ng-bind="creditCard.type"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="address panel panel-default">
+            <div class="panel-heading"><i class="fa fa-home"></i> 地址</div>
+            <ul class="list-group">
+                <li ng-repeat="address in account.addresses" class="list-group-item">
+                    <div>
+                        <span>国家：</span>
+                        <span ng-bind="address.country"></span>
+                    </div>
+                    <div>
+                        <span>省：</span>
+                        <span ng-bind="address.province"></span>
+                    </div>
+                    <div>
+                        <span>市：</span>
+                        <span ng-bind="address.city"></span>
+                    </div>
+                    <div>
+                        <span>区：</span>
+                        <span ng-bind="address.district"></span>
+                    </div>
+                    <div>
+                        <span>街道：</span>
+                        <span ng-bind="address.street1"></span>
+                        <span ng-bind="address.street2"></span>
+                    </div>
+                    <div>
+                        <span>邮编：</span>
+                        <span ng-bind="address.zipCode"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

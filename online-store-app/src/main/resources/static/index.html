@@ -14,6 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/lib/angular/toaster.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.min.css">
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
@@ -31,13 +33,17 @@
 
         <div ng-include="'assets/views/common/header.html'"></div>
 
-        <div id="content" data-ui-view class="container"></div>
+        <div id="content" data-ui-view></div>
         <!--<div ng-view></div>-->
 
         <toaster-container
                 toaster-options="{'position-class': 'toast-bottom-center'}"></toaster-container>
 
-        <div id="loading" class="ajax-loader"><img src="assets/img/AjaxLoader.gif"></div>
+        <div id="loading" class="ajax-loader">
+            <img src="assets/img/AjaxLoader.gif">
+            <!--<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>-->
+        </div>
 
         <div ng-include="'assets/views/common/footer.html'"></div>
 

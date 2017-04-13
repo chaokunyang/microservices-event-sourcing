@@ -27,26 +27,22 @@ define(['angular-resource'], function () {
         })
     }]);
 
-    app.factory('orderService', function () {
-        var completedOrder = {};
-
-        function set(data) {
-            completedOrder = data;
-        }
-
-        function get() {
-            return completedOrder;
-        }
-
-        return {
-            set: set,
-            get: get
-        }
-    });
-
     app.factory('Order', ['$resource', function ($resource) {
         return $resource('/api/order/v1/orders/:orderId', {}, {
-
+            fetchOrders: {
+                url: '/api/order/v1/accounts/:accountNumber/orders',
+                method: 'GET',
+                isArray: true
+            },
+            fetchOrder: {
+                isArray: false
+            }
         })
     }]);
+
+    app.factory('Account', ['$resource', function ($resource) {
+        return $resource('/api/account/v1/accounts', {}, {
+
+        })
+    }])
 });

@@ -1,17 +1,18 @@
 <style>
-
+    #home table th:first-child, #home table th:last-child {
+        width: 6em;
+    }
 </style>
 <div id="home" class="container">
     <table class="table table-bordered table-striped">
         <caption>产品列表</caption>
         <thead>
         <tr>
-            <th>productId</th>
-            <th>name</th>
-            <th>description</th>
-            <th>unitPrice</th>
-            <th>inStock</th>
-
+            <th>产品编号</th>
+            <th>名字</th>
+            <th>描述</th>
+            <th>单价</th>
+            <th>库存状态</th>
         </tr>
         </thead>
         <tbody><a href="index.html#/products/' + products[i].productId + '"></a>

@@ -2,13 +2,13 @@ define(['js/app'], function (app) {
     'use strict';
     // console.log(app);
     app.controller('AccountCtrl', ['$scope', '$http', '$templateCache', function ($scope, $http) {
-        $scope.url = '/api/account/v1/accounts';
+        var url = '/api/account/v1/accounts';
         $scope.accounts = {};
 
         var fetchAccounts = function () {
             $http({
                 method: 'GET',
-                url: $scope.url
+                url: url
             }).success(function (data) {
                 $scope.accounts = data;
             }).error(function (data, status, headers, config) {
@@ -19,14 +19,14 @@ define(['js/app'], function (app) {
     }]);
 
     app.controller('UserCtrl', ['$scope', '$http', 'toaster', '$rootScope', '$location', function ($scope, $http, toaster, $rootScope, $location) {
-        $scope.meUrl = '/api/user/auth/v1/me';
+        var meUrl = '/api/user/auth/v1/me';
         $scope.user = {};
 
         var fetchUser = function () {
-            // $http.get($scope.meUrl).success....
+            // $http.get(meUrl).success....
             $http({
                 method: 'GET',
-                url: $scope.meUrl
+                url: meUrl
             }).success(function (data, status, headers, config) {
                 $scope.user = data;
             }).error(function (data, status, headers, config) {
@@ -34,10 +34,12 @@ define(['js/app'], function (app) {
             });
         };
 
+        fetchUser();
+
         // 未登录无法获取用户信息，直接获取的话会重定向的Oauth2.0认证服务器登录页，从而得到的结果是登录页面HTML代码。而且这是两个url不同域（CORS），Oauth2.0认证服务器登录页并没有添加 Access-Control-Allow-Origin: http://localhost:8788，因此http://localhost:8787 并不能够获取到Oauth2.0认证服务器登录页html代码。
-        if(sessionStorage.getItem("authenticated")) {
-            fetchUser();
-        }
+        // if(sessionStorage.getItem("authenticated")) {
+        //     fetchUser();
+        // }
 
         $scope.logout = function () {
             $http.post('logout', {}).success(function () {

@@ -1,10 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<style>
+    #order-details .panel-body > div {
+        padding: 10px 15px;
+    }
+    #order-details .panel-body > div > span:first-child {
+        display: inline-block;
+        width: 7%;
+    }
+    #order-shipping-address .panel-body > div {
+        padding: 10px 15px;
+    }
+    #order-shipping-address .panel-body > div > span:first-child {
+        display: inline-block;
+        width: 4%;
+    }
+</style>
+<div class="container">
+    <div id="order-details" class="panel panel-default">
+        <div class="panel-heading">订单详情</div>
+        <div class="panel-body">
+            <div>
+                <span>订单号：</span>
+                <span ng-bind="order.orderId"></span>
+            </div>
+            <div>
+                <span>订单状态：</span>
+                <span ng-bind="order.orderStatus"></span>
+            </div>
+            <div>
+                <span>账号：</span>
+                <span ng-bind="order.accountNumber"></span>
+            </div>
+            <div>
+                <span>日期：</span>
+                <span ng-cloak>{{order.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}</span>
+            </div>
+            <div>
+                <span>金额：</span>
+                <span ng-bind="order.total | currency:'￥'"></span>
+            </div>
+        </div>
+    </div>
 
-</body>
-</html>
+    <div class="panel panel-default">
+        <div class="panel-heading">购买商品</div>
+        <div class="list-group">
+            <li class="list-group-item" ng-if="order.orderItems.length == 0">你的订单是空的</li>
+            <li class="list-group-item" ng-repeat="item in order.orderItems">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-2">
+                            <div class="thumbnail">
+                                <a href="#/products/{{item.productId}}">
+                                    <img alt="{{item.name}}" ng-src="/assets/img/travels/{{item.productId}}.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div>
+                                <label>名字：</label><span ng-bind="item.name"></span>
+                            </div>
+                            <div>
+                                <label>商品：</label><span ng-bind="item.productId"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            <label>单价：</label><span ng-bind="item.price | currency:''"></span>
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            <label>数量：</label><span ng-bind="item.quantity"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </div>
+
+    <div id="order-shipping-address" class="panel panel-default">
+        <div class="panel-heading">收货地址</div>
+        <div class="panel-body">
+            <div>
+                <span>国家：</span>
+                <span ng-bind="order.shippingAddress.country"></span>
+            </div>
+            <div>
+                <span>省：</span>
+                <span ng-bind="order.shippingAddress.province"></span>
+            </div>
+            <div>
+                <span>市：</span>
+                <span ng-bind="order.shippingAddress.city"></span>
+            </div>
+            <div>
+                <span>区：</span>
+                <span ng-bind="order.shippingAddress.district"></span>
+            </div>
+            <div>
+                <span>街道：</span>
+                <span ng-bind="order.shippingAddress.street1"></span>
+                <span ng-bind="order.shippingAddress.street2"></span>
+            </div>
+            <div>
+                <span>邮编：</span>
+                <span ng-bind="order.shippingAddress.zipCode"></span>
+            </div>
+        </div>
+    </div>
+</div>

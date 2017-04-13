@@ -9,9 +9,10 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
                 controller: 'homeCtrl',
                 controllerUrl: 'js/home/homeCtrl'
             }))
-            .state('user', angularAMD.route({
-                url: '/user',
-                templateUrl: 'assets/views/user/user.html',
+            .state('settings', angularAMD.route({
+                url: '/settings',
+                templateUrl: 'assets/views/user/account.html',
+                controller: 'AccountCtrl',
                 controllerUrl: 'js/user/user'
             }))
             .state('ProductItem', angularAMD.route({
@@ -26,9 +27,16 @@ define(['angularAMD', 'angular', 'angular-ui-router', 'angular-resource', 'angul
                 controller: 'CartCtrl',
                 controllerUrl: 'js/cart/cart'
             }))
+            .state('orders', angularAMD.route({
+                url: '/orders',
+                templateUrl: 'assets/views/order/orders.html',
+                controller: 'OrderListCtrl',
+                controllerUrl: 'js/order/order'
+            }))
             .state('order', angularAMD.route({
-                url: '/order',
-                templateUrl: 'assets/views/order.html',
+                url: '/orders/:orderId',
+                templateUrl: 'assets/views/order/order.html',
+                controller: 'OrderCtrl',
                 controllerUrl: 'js/order/order'
             }));
 

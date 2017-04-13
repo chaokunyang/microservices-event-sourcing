@@ -7,7 +7,7 @@ package com.elasticjee.order;
  */
 public enum OrderEventType {
     /**
-     * 用户已购买商品事件。对应用户在页面发起购买请求，系统收到用户发起购买请求<strong>这一事实</strong>，但尚未创建订单
+     * 用户已购买产品事件。对应用户在页面发起购买请求，系统收到用户发起购买请求<strong>这一事实</strong>，但尚未创建订单
      */
     PURCHASED,
 

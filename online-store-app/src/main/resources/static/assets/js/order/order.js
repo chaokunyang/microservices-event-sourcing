@@ -1,79 +1,66 @@
 define(['js/app'], function (app) {
     'use strict';
     // console.log(app);
-    app.register.controller('OrderListCtrl', ['$scope', '$http', '$location', 'orderService', '$routeParams',
-        function ($scope, $http, $location, orderService, $routeParams) {
-            // Get account
-            $scope.accountsUrl = '/api/account/v1/accounts';
-            $scope.accounts = {};
+    app.register.controller('OrderListCtrl', ['$scope', 'Order', '$stateParams', 'Account', 'toaster', '$q', function ($scope, Order, $stateParams, Account, toaster, $q) {
+        $scope.accounts = {};
+        $scope.defaultAccount = {};
 
-            var fetchAccounts = function () {
-                $http({
-                    method: 'GET',
-                    url: $scope.accountsUrl
-                }).success(function (accountData) {
-                    $scope.accounts = accountData;
-                    var defaultAccount = {};
-                    // Get default account
-                    for (var i = 0; i < $scope.accounts.length; i++) {
-                        if ($scope.accounts[i].defaultAccount) {
-                            defaultAccount = $scope.accounts[i];
-                        }
+        var fetchAccounts = function () {
+            return Account.query({}, function (data) {
+                $scope.accounts = data;
+                var account;
+                for( var i = 0; i < $scope.accounts.length; i++) {
+                    account = $scope.accounts[i];
+                    if(account.defaultAccount) {
+                        $scope.defaultAccount = account;
+                        break;
                     }
+                }
+            }, function (error) {
+                toaster.pop('error', '获取账户信息失败', error);
+            })
+        };
 
-                    $scope.orderListUrl = '/api/order/v1/accounts/' + defaultAccount.accountNumber + "/orders";
+        var fetchOrders = function () {
+            Order.fetchOrders({accountNumber: $scope.defaultAccount.accountNumber}, function (data) {
+                $scope.orders = data;
+                // 计算每张订单总金额
+                for(var i = 0; i < $scope.orders.length; i++) {
+                    var order = $scope.orders[i];
+                    order.total = 0.0;
 
-                    var fetchOrders = function () {
-                        $http({
-                            method: 'GET',
-                            url: $scope.orderListUrl
-                        }).success(function (orderData, status, headers, config) {
-                            $scope.orders = orderData;
-                            // Calculate total
-                            for (var j = 0; j < $scope.orders.length; j++) {
-                                $scope.orders[j].total = 0.0;
-                                for (var i = 0; i < $scope.orders[j].lineItems.length; i++) {
-                                    $scope.orders[j].total += (($scope.orders[j].lineItems[i].price)
-                                        + ($scope.orders[j].lineItems[i].price * $scope.orders[j].lineItems[i].tax))
-                                        * $scope.orders[j].lineItems[i].quantity;
-                                }
-                            }
-                        }).error(function (data, status, headers, config) {
-                            $location.path('/');
-                        });
-                    };
-
-                    fetchOrders();
-
-                }).error(function (data, status, headers, config) {
-                });
-            };
-
-            fetchAccounts();
-
-
-        }]);
-    app.register.controller('OrderCtrl', ['$scope', '$http', '$location', 'orderService', '$routeParams',
-        function ($scope, $http, $location, orderService, $routeParams) {
-            $scope.orderItemUrl = '/api/order/v1/orders/' + $routeParams.orderId;
-            var fetchOrder = function () {
-                $http({
-                    method: 'GET',
-                    url: $scope.orderItemUrl
-                }).success(function (data, status, headers, config) {
-                    $scope.order = data;
-                    // Calculate total
-                    $scope.order.total = 0.0;
-                    for (var i = 0; i < $scope.order.lineItems.length; i++) {
-                        $scope.order.total += (($scope.order.lineItems[i].price)
-                            + ($scope.order.lineItems[i].price * $scope.order.lineItems[i].tax))
-                            * $scope.order.lineItems[i].quantity;
+                    for(var j = 0; j < order.orderItems.length; j++) {
+                        var orderItem = order.orderItems[j];
+                        // 每个订单项金额 = (价格+税) * 数量
+                        order.total += orderItem.price * (1 + orderItem.tax) * orderItem.quantity;
                     }
-                }).error(function (data, status, headers, config) {
-                    $location.path('/');
-                });
-            };
+                }
+            }, function (error) {
+                toaster.pop('error', '获取订单列表失败', error);
+            })
+        };
 
-            fetchOrder();
-        }]);
+        $q.all([fetchAccounts().$promise]).then(function () {
+            fetchOrders(); // fetchOrders必须在fetchAccounts完成之后执行，因为它依赖defaultAccount的信息
+        })
+
+    }]);
+
+    app.register.controller('OrderCtrl', ['$scope', 'Order', '$stateParams', 'toaster', function ($scope, Order, $stateParams, toaster) {
+        var fetchOrder = function () {
+            Order.fetchOrder({orderId: $stateParams.orderId}, function (data) {
+                $scope.order = data;
+                // 计算总金额
+                $scope.order.total = 0.0;
+                for(var i = 0; i < $scope.order.orderItems.length; i++) {
+                    var orderItem = $scope.order.orderItems[i];
+                    // 每个订单项金额 = (价格+税) * 数量
+                    $scope.order.total += orderItem.price * (1 + orderItem.tax) * orderItem.quantity;
+                }
+            }, function (error) {
+                toaster.pop('error', '获取订单信息失败', error);
+            })
+        };
+        fetchOrder();
+    }]);
 });

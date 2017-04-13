@@ -24,14 +24,14 @@
         <div id="navbar" class="collapse navbar-collapse" ng-controller="UserCtrl">
             <ul class="nav navbar-nav">
                 <li ng-if="user.id != undefined" class="active">
-                    <a href="#home">首页</a>
+                    <a href="#home"><i class="fa fa-home"></i> 首页</a>
                 </li>
                 <li ng-if="user.id != undefined"><span class="welcome">欢迎 {{user.firstName}} {{user.lastName}}</span></li>
                 <li ng-if="user.id != undefined"><a href="/#/orders">订单</a></li>
-                <li ng-if="user.id != undefined"><a href="/#/settings">设置</a></li>
-                <li ng-if="user.id != undefined"><a href="/#/cart"><i class="fa fa-shopping-cart"></i>购物车</a></li>
-                <li ng-if="user.id == undefined"><a href="/login">登录</a></li>
-                <li ng-if="user.id != undefined"><a ng-click="logout()" href="#">退出</a></li>
+                <li ng-if="user.id != undefined"><a href="/#/cart"><i class="fa fa-shopping-cart"></i> 购物车</a></li>
+                <li ng-if="user.id != undefined"><a href="/#/settings"><i class="fa fa-cog"></i> 设置</a></li>
+                <li ng-if="user.id == undefined"><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> 登录</a></li>
+                <li ng-if="user.id != undefined"><a ng-click="logout()" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

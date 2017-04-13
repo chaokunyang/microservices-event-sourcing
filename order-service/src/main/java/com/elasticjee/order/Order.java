@@ -2,6 +2,7 @@ package com.elasticjee.order;
 
 import com.elasticjee.address.Address;
 import com.elasticjee.address.AddressType;
+import com.elasticjee.data.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -11,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 订单领域对象
+ * 订单领域类
  * @author chaokunyang
  */
 @Document
-public class Order {
+public class Order extends BaseEntity {
     @Id
     private ObjectId orderId; // 使用ObjectId，因为它带有时间和自增顺序。注意在别的服务订单id还是要使用String，因为别的服务不应该有mongo依赖，所以getOrderId方法返回值也是String类型
     private String accountNumber;

@@ -14,7 +14,14 @@ import java.util.Set;
 @Entity
 public class Account extends BaseEntity {
     private Long id;
+    /**
+     * 用户唯一标识。如登录用的用户名。ps: 用户名作为userId是合理的，因为登录时使用的用户名是唯一的
+     */
     private String userId;
+    /**
+     * 账户号，即账号
+     */
+    @Column(unique = true)
     private String accountNumber;
     private Boolean defaultAccount;
     private Set<CreditCard> creditCards;

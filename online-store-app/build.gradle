@@ -3,3 +3,8 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-zuul'
     compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
 }
+// Making static classpath resources reloadable means that bootRun does not use the output of the processResources task, i.e., when invoked using bootRun, your application will use the resources in their unprocessed form.
+// You can use that with an external css/js compiler process if you are writing that code with higher level tools. 如 webpack、babel、create-react-app
+bootRun {
+    addResources = true
+}

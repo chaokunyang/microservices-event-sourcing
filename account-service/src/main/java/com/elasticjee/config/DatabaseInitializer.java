@@ -35,7 +35,7 @@ public class DatabaseInitializer {
         customerRepository.deleteAll(); // Customer有一个外键引用Account，因此需要先删除Customer，然后才删除Account
         accountRepository.deleteAll();
 
-        Account account = new Account("user", "'user'");
+        Account account = new Account("user", "12345");
         account.setDefaultAccount(true);
 
         Set<Address> addresses = new HashSet<>();
@@ -51,7 +51,7 @@ public class DatabaseInitializer {
         //account = accountRepository.save(account); // spring data save方法的jpa实现是 EntityManager.persist方法，该方法不能persist detached entity, EntityManager.merge方法可以，但spring data jpa 未采用，所以 不单独保存，而是放到保存customer时使用级联保存。
 
         // 创建一个customer
-        Customer customer = new Customer("Amanda", "Yang", "timeyang@timeyang.com", account);
+        Customer customer = new Customer("Time", "Yang", "timeyang@timeyang.com", account);
         customerRepository.save(customer);
     }
 

@@ -16,24 +16,25 @@ import java.util.Optional;
  * @author yangck
  */
 @RestController
+@RequestMapping("/v1")
 public class OrderControllerV1 {
 
     @Autowired
     private OrderServiceV1 orderService;
 
     @RequestMapping(value = "/accounts/{accountNumber}/orders")
-    public ResponseEntity<List<Order>> getOrders(@PathVariable("accountNumber") String accountNumber) throws Exception {
+    public ResponseEntity getOrders(@PathVariable("accountNumber") String accountNumber) throws Exception {
         return Optional.ofNullable(orderService.getOrdersForAccount(accountNumber))
-                .map(order -> new ResponseEntity<>(order, HttpStatus.OK))
+                .map(orders -> new ResponseEntity<>(orders, HttpStatus.OK))
                 .orElseThrow(() -> new Exception("用户不存在该账户"));
     }
 
-    @RequestMapping(value = "orders/{orderId}/events", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> addOrderEvent(@RequestBody OrderEvent orderEvent, @PathVariable("orderId") String orderId) throws Exception {
+    @RequestMapping(value = "/orders/{orderId}/events", method = RequestMethod.POST)
+    public ResponseEntity addOrderEvent(@RequestBody OrderEvent orderEvent, @PathVariable("orderId") String orderId) throws Exception {
         Assert.notNull(orderEvent);
         Assert.notNull(orderId);
         return Optional.ofNullable(orderService.addOrderEvent(orderEvent, true))
-                .map(result -> new ResponseEntity<>(result, HttpStatus.OK))
+                .map(result -> new ResponseEntity<>(result, HttpStatus.NO_CONTENT))
                 .orElseThrow(() -> new Exception("订单事件不能被应用到该订单"));
     }
 
