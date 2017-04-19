@@ -8,8 +8,8 @@ security:
       userInfoUri: http://localhost:8181/auth/user
     # the filter also needs to know about the client registration with user-service
     client:
-      clientId: elasticjee
-      clientSecret: elasticjeesecret
+      clientId: timeyang
+      clientSecret: timeyangsecret
       accessTokenUri: http://localhost:8181/oauth/token
       userAuthorizationUri: http://localhost:8181/oauth/authorize
   ignored: /assets/**

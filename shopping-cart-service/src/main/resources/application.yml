@@ -18,7 +18,7 @@ security:
     resource:
       userInfoUri: http://localhost:8181/auth/user
     client:
-      client-id: elasticjee
+      client-id: timeyang
       access-token-uri: http://localhost:8787
   enable-csrf: false
   ignored: /api/**

@@ -4,15 +4,15 @@
 
 
 二、Spring Oauth2.0
-1、An Authorization Server is nothing more than a bunch of endpoints, and they are implemented in Spring OAuth2 as Spring MVC handlers. We already have a secure application, so it’s really just a matter of adding the @EnableAuthorizationServer annotation： com.elasticjee.config.AuthorizationServerConfig
+1、An Authorization Server is nothing more than a bunch of endpoints, and they are implemented in Spring OAuth2 as Spring MVC handlers. We already have a secure application, so it’s really just a matter of adding the @EnableAuthorizationServer annotation： com.timeyang.config.AuthorizationServerConfig
 
 with that new annotation in place Spring Boot will install all the necessary endpoints and set up the security for them, provided we supply a few details of an OAuth2 client we want to support:
 ```yaml
 security:
   oauth2:
     client:
-      client-id: elasticjee
-      client-secret: elasticjeesecret
+      client-id: timeyang
+      client-secret: timeyangsecret
       scope: openid
       auto-approve-scopes: '.*'
 ```

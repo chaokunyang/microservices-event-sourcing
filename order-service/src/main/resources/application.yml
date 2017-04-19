@@ -15,7 +15,7 @@ security:
     resource:
       userInfoUri: http://localhost:8181/auth/user
     client:
-      client-id: elasticjee
+      client-id: timeyang
   ignored: /api/**
 eureka:
   instance:

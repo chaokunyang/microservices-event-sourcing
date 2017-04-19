@@ -15,7 +15,7 @@ buildscript {
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-    group = 'com.elasticjee.onlinestore'
+    group = 'com.timeyang.onlinestore'
     version = '0.1'
 }
 

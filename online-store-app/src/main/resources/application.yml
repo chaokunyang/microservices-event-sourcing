@@ -20,8 +20,8 @@ security:
       userInfoUri: http://localhost:8181/auth/user
     # the filter also needs to know about the client registration with user-service
     client:
-      clientId: elasticjee
-      clientSecret: elasticjeesecret
+      clientId: timeyang
+      clientSecret: timeyangsecret
       accessTokenUri: http://localhost:8181/auth/oauth/token
       userAuthorizationUri: http://localhost:8181/auth/oauth/authorize
 # 忽略的资源在WebSecurityConfigurer.configure方法里面配置，即OnlineStoreApplication.configure方法。因为在这里配置不够灵活
