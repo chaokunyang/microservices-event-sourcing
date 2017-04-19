@@ -64,6 +64,26 @@ curl -v -u neo4j:neo4j -X POST localhost:7474/user/neo4j/password -H "Content-ty
 
 如果每个服务成功加载，浏览[在线购物网站](http://localhost:8787)。点击登录，你将被重定向到Oauth2.0授权服务器，即[user-service](http://localhost:8181/auth/login)。用户名是 user，密码是 password。你将被认证和请求允许对在线购物网站进行令牌授权。在完成授权后，你将被重定向到在线购物网站，然后便可以访问来自边缘服务的受保护资源。
 
-## License
+## 三、预览
+* 首页未登录
+![首页未登录](https://raw.githubusercontent.com/chaokunyang/microservices-event-sourcing/master/docs/images/01-home-not-logged.png)
+* OAuth2.0登录
+![OAuth2.0登录](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/02-oauth2.0-login.png)
+* Oauth2.0授权
+![Oauth2.0授权](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/03-oauth2.0-grant.png)
+* 首页已登录
+![首页已登录](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/04-home-logged.png)
+* 商品详情
+![商品详情](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/05-product-detail.jpg)
+* 购物车
+![购物车](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/06-shopping-cart.png)
+* 订单列表
+![订单列表](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/07-orders.png)
+* 订单详情
+![订单详情](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/08-order.jpg)
+* 用户设置
+![订单详情](https://github.com/chaokunyang/microservices-event-sourcing/raw/master/docs/images/09-user-settings.jpg)
+
+## 四、License
 
 This project is licensed under Apache License 2.0.
