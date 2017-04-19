@@ -8,7 +8,6 @@ dependencies {
 //    compile 'org.springframework.boot:spring-boot-starter-freemarker'
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile 'org.springframework.boot:spring-boot-starter-redis'
-    compile 'com.h2database:h2'
     runtime 'mysql:mysql-connector-java'
     compile 'joda-time:joda-time'
     compile 'com.google.code.gson:gson'

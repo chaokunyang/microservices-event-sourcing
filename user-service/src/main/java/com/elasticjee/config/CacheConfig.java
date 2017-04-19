@@ -18,7 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class CacheConfig {
     @Bean
     public JedisConnectionFactory redisConnectionFactory(
-            @Value("${spring.redis.port}") String redisHost,
+            @Value("${spring.redis.host}") String redisHost,
             @Value("${spring.redis.port}") Integer redisPort) {
         JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
         redisConnectionFactory.setHostName(redisHost);
