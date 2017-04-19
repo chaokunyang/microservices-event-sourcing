@@ -33,7 +33,7 @@ MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory) WHERE product.pro
 MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory)-[:STOCKED_IN]->(:Warehouse {name:'Pivotal SF'}) WHERE product.productId = 'SKU-24642' AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory
 ```
 ```
-MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory) WHERE product.productId in ['SKU-24642', 'SKU-34563', 'SKU-12464', 'SKU-64233'] AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory
+MATCH (product:Product)<-[:PRODUCT_TYPE]-(inventory:Inventory) WHERE product.productId in ['PD-00001', 'SKU-34563', 'SKU-12464', 'SKU-64233'] AND NOT (inventory)<-[:CONTAINS_PRODUCT]-() RETURN inventory
 ```
 能够得出正确结果，表面查询语法写的没错
 

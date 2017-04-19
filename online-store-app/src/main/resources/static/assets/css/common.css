@@ -1,9 +1,26 @@
-#content {
-    margin-top: 5em;
+/*Original Bootstrap's CSS depends on empty href attributes to style cursors for several components (pagination, tabs etc.). But in AngularJS adding empty href attributes to link tags will cause unwanted route changes. This is why we need to remove empty href attributes from directive templates and as a result styling is not applied correctly. The remedy is simple, just add the following styling to your application:*/
+nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+html, body {
+    height:100%;
 }
-table caption {
-    font-size: 1.5em;
+body, #not-footer {
+    position: relative;
 }
+#not-footer {
+    min-height: 100%;
+    margin: 0 0 -140px;
+}
+
+#not-footer #content-wrapper {
+    padding-top: 5em;
+}
+
+#content-wrapper .clear {
+    height: 140px; /*给footer留出空间*/
+    clear: both;
+}
+
 #loading {
     display: none;
 }
@@ -16,7 +33,10 @@ table caption {
     display: block;
 }
 
-
+#content-wrapper .thumbnail {
+    padding: 0;
+    border: none;
+}
 .buy-qty, .form-control .buy-qty, .form-inline .form-control {
     width: 6em;
 }
@@ -24,4 +44,17 @@ table caption {
 .alert {
     margin: 0 0.5em;
     padding: 6px 12px;
+}
+
+#footer {
+    position: relative; /* 使之能够使用clear留出的140px高度 */
+    height: 99px; /* height + clear + border-top = clear留出的140px高度 */
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #ddd;
+    color: #666;
+    font-size: 13px;
+    overflow: hidden;
+    background: #f5f5f5;
+    text-shadow: 0 1px 0 #fff;
 }

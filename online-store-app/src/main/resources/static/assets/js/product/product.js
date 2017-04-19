@@ -11,48 +11,37 @@ define(['js/app'], function (app) {
         fetchProducts();
     }]);
 
-    app.register.controller('AddToCartCtrl', ['$scope', '$http', 'Cart', 'toaster', '$timeout', function ($scope, $http, Cart, toaster, $timeout) {
-        $scope.qty = 0;
-
-        $scope.addToCart = function () {
-            if ($scope.qty && $scope.qty > 0) {
-                var cartEvent = {
-                    'cartEventType': 'ADD_ITEM',
-                    'productId': $scope.product.productId, // 访问parent scope 的属性
-                    'quantity': $scope.qty
-                };
-                Cart.addCartEvent({}, cartEvent, function (res) {
-                    console.log(res);
-                    $scope.qty = 0;
-                    function showAlert() {
-                        $("#addToCartAlert").addClass("in");
-                    }
-                    function hideAlert() {
-                        $("#addToCartAlert").removeClass("in");
-                    }
-                    $timeout(function () {
-                        showAlert();
-                        $timeout(function () {
-                            hideAlert()
-                        }, 2000, false); // false表示跳过 model dirty checking
-                    }, 20, false)
-                }, function (error) {
-                    toaster.pop('error', '添加产品到购物车失败', error);
-                });
-            }
-        };
-    }]);
-
-    app.register.controller('ProductItemCtrl', ['$scope', '$http', '$templateCache', 'toaster', '$stateParams', 'Product', function ($scope, $http, $templateCache, toaster, $stateParams, Product) {
+    app.register.controller('ProductItemCtrl', ['$scope', '$http', '$templateCache', 'toaster', '$stateParams', 'Product', '$q', function ($scope, $http, $templateCache, toaster, $stateParams, Product, $q) {
         $scope.productItemUrl = 'api/catalog/v1/products/' + $stateParams.productId;
         var fetchProduct = function () {
-            Product.getProductByProductId({productId: $stateParams.productId}, function (product) {
+            return Product.getProductByProductId({productId: $stateParams.productId}, function (product) {
                 $scope.product = product;
             }, function (error) {
                 toaster.pop('error', '获取产品信息失败', error);
             });
         };
-        fetchProduct();
+
+        // 获取相关商品
+        $scope.products = [];
+        var fetchRelatedProducts = function () {
+            Product.getCatalog(function (catalog) {
+                if($scope.product) {
+                    var counter = 0, prod;
+                    for(var i = 0; i < catalog.products.length; i++) {
+                        prod = catalog.products[i];
+                        // 当前产品不展示为相关产品
+                        if(prod.productId != $scope.product.productId) {
+                            $scope.products[counter++] = prod;
+                        }
+                        if(counter == 4) break; // 只展示4个相关产品
+                    }
+                }
+            });
+        };
+        fetchRelatedProducts();
+        $q.all([fetchProduct().$promise]).then(function () {
+            fetchRelatedProducts();
+        })
     }]);
 
 });

@@ -1,28 +1,102 @@
 <style>
-    #home table th:first-child, #home table th:last-child {
-        width: 6em;
+    #home .home-caption {
+        color: #666;
+        margin-bottom: 0.5em;
+    }
+    #home #product-list ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    #home #product-list .thumbnail img {
+        height: 189px;
+        width: 100%;
+    }
+    #home #product-list ul li  {
+        list-style: none;
+        margin-bottom: 1.2em;
+    }
+    #home #product-list ul li .thumbnail {
+        margin-bottom: 5px
+    }
+    #home #product-list ul li .product-info > div {
+        text-align: center;
+    }
+    #home #product-list ul li .product-info > div:first-child {
+        padding-left: 1em;
+    }
+    #home #product-list .unit-price {
+        display: inline-block;
+        color: #e4393c;
+        font-weight: 600;
+        font-size: 1.2em;
+        padding-right: 1em;
+    }
+    #home #product-list .stock {
+        display: inline-block;
+        color: #999;
+        font-size: 1.1em;
+        padding-right: 1em
+    }
+    #home #product-list .add-to-cart {
+        display: inline-block;
+        color: #e4393c;
+        font-size: 1.4em;
+    }
+    #home #product-list .add-to-cart div[id^='add-to-cart-alert-'] {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+    #home #product-list .add-to-cart .submit-btn {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+    #home #product-list .add-to-cart .submit-btn:hover {
+        cursor: pointer;
+    }
+    #home #product-list .add-to-cart .alert-success {
+        color: #71b247;
+        background-color: transparent;
+        border-color: transparent;
+        vertical-align: middle;
+    }
+    #home #product-list .add-to-cart .alert-success .fa-check-circle-o {
+        vertical-align: middle;
     }
 </style>
 <div id="home" class="container">
-    <table class="table table-bordered table-striped">
-        <caption>产品列表</caption>
-        <thead>
-        <tr>
-            <th>产品编号</th>
-            <th>名字</th>
-            <th>描述</th>
-            <th>单价</th>
-            <th>库存状态</th>
-        </tr>
-        </thead>
-        <tbody><a href="index.html#/products/' + products[i].productId + '"></a>
-        <tr ng-repeat="product in products">
-            <td><a ng-href="#products/{{product.productId}}"><span ng-bind="product.productId"></span></a></td>
-            <td><span ng-bind="product.name"></span></td>
-            <td><span ng-bind-html="product.description | rawHtml"></span></td>
-            <td><span ng-bind="product.unitPrice"></span></td>
-            <td><span ng-bind="product.inStock"></span></td>
-        </tr>
-        </tbody>
-    </table>
+    <h1 class="home-caption">产品列表</h1>
+    <div id="product-list">
+        <ul class="row">
+            <li ng-repeat="product in products" class="col-md-3 col-sm-3">
+                <div>
+                    <div class="thumbnail" title="{{product.description | rawHtml}}">
+                        <a ng-href="#products/{{product.productId}}">
+                            <img ng-src="/assets/img/travels/{{product.productId}}.jpg" alt="{{product.name}}">
+                        </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <span class="unit-price" ng-bind="product.unitPrice | currency:'￥'"></span>
+                        <span class="stock"><strong ng-bind="product.inStock | stock"></strong></span>
+                        <span class="add-to-cart" ng-controller="AddToCartCtrl" ng-if="product.inStock" >
+                            <div ng-click="addToCart()" class="submit-btn">
+                                <i class="fa fa-shopping-cart"></i>
+                            </div>
+                            <div id="{{'add-to-cart-alert-' + product.productId}}" class="alert alert-success fade" role="alert">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="product-caption">
+                        <a ng-href="#products/{{product.productId}}"><span ng-bind="product.name"></span></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

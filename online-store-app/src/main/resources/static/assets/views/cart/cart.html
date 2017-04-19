@@ -1,15 +1,21 @@
 <style>
+    #cart .thumbnail img {
+        width: 150px;
+        height: 100px;
+    }
+
     .checkout-summary > div {
         text-align: right;
     }
     .checkout-summary > div > * {
         display: inline-block;
+
     }
     .updateProductAlert {
         display: inline-block;
     }
 </style>
-<div class="container">
+<div id="cart" class="container">
     <div class="panel panel-default">
         <div class="panel-heading">购物车</div>
 
@@ -19,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-2 col-xs-2 cart-item-image">
                         <div class="thumbnail">
-                            <a ng-href="index.html#/products/{{item.product.productId}}">
+                            <a ng-href="#/products/{{item.product.productId}}">
                                 <img ng-src="/assets/img/travels/{{item.product.productId}}.jpg" alt="{{item.product.name}}">
                             </a>
                         </div>

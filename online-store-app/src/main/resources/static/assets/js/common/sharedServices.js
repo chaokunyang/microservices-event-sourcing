@@ -36,4 +36,35 @@ define(['js/app'], function (app) {
             }
         }])
 
+    app.controller('AddToCartCtrl', ['$scope', '$http', 'Cart', 'toaster', '$timeout', function ($scope, $http, Cart, toaster, $timeout) {
+        $scope.qty = 1;
+
+        $scope.addToCart = function () {
+            if ($scope.qty && $scope.qty > 0) {
+                var cartEvent = {
+                    'cartEventType': 'ADD_ITEM',
+                    'productId': $scope.product.productId, // 访问parent scope 的属性
+                    'quantity': $scope.qty
+                };
+                Cart.addCartEvent({}, cartEvent, function (res) {
+                    console.log(res);
+                    $scope.qty = 1;
+                    function showAlert() {
+                        $("#add-to-cart-alert-" + $scope.product.productId).addClass("in");
+                    }
+                    function hideAlert() {
+                        $("#add-to-cart-alert-" + $scope.product.productId).removeClass("in");
+                    }
+                    $timeout(function () {
+                        showAlert();
+                        $timeout(function () {
+                            hideAlert()
+                        }, 2000, false); // false表示跳过 model dirty checking
+                    }, 20, false)
+                }, function (error) {
+                    toaster.pop('error', '添加产品到购物车失败', error);
+                });
+            }
+        };
+    }]);
 });

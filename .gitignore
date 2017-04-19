@@ -162,26 +162,8 @@ gradle-app.setting
 
 *.iml
 .iml
-.idea
 /class
 /classes
 /**/build/
 
 /log
-account-service/src/test/resources/
-catalog-service/src/test/
-config-service/src/test/
-discovery-service/src/test/
-edge-service/src/test/
-hystrix-dashboard/src/test/
-inventory-service/src/test/
-online-store-app/src/main/resources/static/assets/fonts/
-online-store-app/src/test/
-order-service/src/test/
-payment-service/src/main/resources/
-payment-service/src/test/
-shopping-cart-service/src/test/resources/
-user-service/src/main/resources/static/assets/fonts/
-user-service/src/main/resources/static/assets/img/
-user-service/src/test/
-docs/

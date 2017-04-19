@@ -1,10 +1,19 @@
 <style>
-    #order-details .panel-body > div {
+    #order-info .panel-body > div {
         padding: 10px 15px;
     }
-    #order-details .panel-body > div > span:first-child {
+    #order-info .panel-body > div > span:first-child {
         display: inline-block;
         width: 7%;
+    }
+
+    #order-details .thumbnail a>img {
+        height: 100px;
+        width: 150px;
+    }
+    .thumbnail a>img {
+        height: 100px;
+        width: 150px;
     }
     #order-shipping-address .panel-body > div {
         padding: 10px 15px;
@@ -14,8 +23,8 @@
         width: 4%;
     }
 </style>
-<div class="container">
-    <div id="order-details" class="panel panel-default">
+<div id="order-details" class="container">
+    <div id="order-info" class="panel panel-default">
         <div class="panel-heading">订单详情</div>
         <div class="panel-body">
             <div>

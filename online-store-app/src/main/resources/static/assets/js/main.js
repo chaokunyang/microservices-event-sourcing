@@ -9,6 +9,7 @@ require.config({
         "angular-route":"lib/angular/angular-route.min",
         'angular-ui-router': 'lib/angular/angular-ui-router.min',
         'angular-resource': 'lib/angular/angular-resource.min',
+        'ui.bootstrap': 'lib/angular/ui-bootstrap-tpls-0.12.0.min',
         'jquery': 'lib/jquery/jquery.min',
         'jquery.uploadify': 'lib/jquery/jquery.uploadify.min',
         'bootstrap': 'lib/bootstrap/js/bootstrap.min',
@@ -31,7 +32,8 @@ require.config({
         'angular-resource': [ 'angular' ],
         'bootstrap': ['jquery'],
         'ngAnimate': ['angular'],
-        'angular-toaster': ['angular', 'ngAnimate']
+        'angular-toaster': ['angular', 'ngAnimate'],
+        'ui.bootstrap': ['angular']
     },
 
     // deps: ['js/app', 'common/sharedServices', 'js/user/user'] // 不要这样启动应用，应该使用下面的require语句在所有模块加载完成后启动angular应用

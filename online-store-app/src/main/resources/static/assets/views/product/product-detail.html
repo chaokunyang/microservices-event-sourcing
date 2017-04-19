@@ -1,7 +1,43 @@
 <style>
+    #product-detail .main-thumbnail img {
+        height: 230px;
+        width: 100%; /*会造成图片宽高比列失真，bootstrap设置的max-width: 100%是比较好的，只是在这里由于各张图片宽高不一致，为了达到一致效果，因此才设置width为100%*/
+    }
 
+    #product-detail .summary .panel-body > div {
+        padding: 0.3em 0.5em;
+    }
+    #product-detail .summary .panel-body > div.item-label {
+        font-weight: 600;
+    }
+
+    #product-detail .panel>.list-group .list-group-item,
+    #product-detail .panel>.panel-collapse>.list-group .list-group-item {
+        padding: 20px 30px;
+    }
+    #product-detail .description {
+        line-height: 2;
+    }
+
+    #product-detail .related-products ul {
+        list-style: none;
+        padding: 0;
+    }
+    #product-detail .related-products .thumbnail img {
+        height: 90px;
+        width: 100%;
+    }
+    #product-detail .related-products ul li  {
+        list-style: none;
+    }
+    #product-detail .related-products ul li .thumbnail {
+        margin-bottom: 5px
+    }
+    #product-detail .related-products ul li .related-product-caption {
+        text-align: center;
+    }
 </style>
-<div class="container">
+<div id="product-detail" class="container">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#home"><i class="fa fa-home"></i> 首页</a></li>
@@ -13,23 +49,25 @@
     <div class="row">
         <div class="col-md-4 col-sm-4">
             <div>
-                <div class="thumbnail">
+                <div class="thumbnail main-thumbnail">
                     <img ng-src="/assets/img/travels/{{product.productId}}.jpg" alt="{{product.name}}">
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default summary">
                 <div class="panel-heading">Summary</div>
-                <div>产品名：</div>
-                <div><span ng-bind="product.name"></span></div>
-                <div>价格：</div>
-                <div><span ng-bind="product.unitPrice | currency:'￥'"></span></div>
+                <div class="panel-body">
+                    <div class="item-label">产品名：</div>
+                    <div><span ng-bind="product.name"></span></div>
+                    <div class="item-label">价格：</div>
+                    <div><span ng-bind="product.unitPrice | currency:'￥'"></span></div>
+                </div>
             </div>
         </div>
         <div class="col-md-8 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">产品详情</div>
                 <div class="panel-body">
-                    <p ng-bind-html="product.description | rawHtml"></p>
+                    <p ng-bind-html="product.description | rawHtml" class="description"></p>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -47,7 +85,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">加入购物车</button>
                             <div class="form-group">
-                                <div id="addToCartAlert" class="alert alert-success fade" role="alert">
+                                <div id="{{'add-to-cart-alert-' + product.productId}}" class="alert alert-success fade" role="alert">
                                     <p>产品已添加到购物车!</p>
                                 </div>
                             </div>
@@ -57,6 +95,26 @@
                         </div>
                     </div>
                 </ul>
+            </div>
+
+            <div class="related-products panel panel-default">
+                <div class="panel-heading">猜您喜欢</div>
+                <div class="panel-body">
+                    <ul class="row">
+                        <li ng-repeat="prod in products" class="col-md-3 col-sm-3">
+                            <div>
+                                <div class="thumbnail">
+                                   <a ng-href="#products/{{prod.productId}}">
+                                       <img ng-src="/assets/img/travels/{{prod.productId}}.jpg" alt="{{product.name}}">
+                                   </a>
+                                </div>
+                            </div>
+                            <div class="related-product-caption">
+                                <a ng-href="#products/{{prod.productId}}"><span ng-bind="prod.name"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

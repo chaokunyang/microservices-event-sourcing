@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title>在线商店首页</title>
+    <title>timeyang store</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,11 +29,13 @@
 
 </head>
 <body>
-    <div class="page container">
-
+    <div id="not-footer">
         <div ng-include="'assets/views/common/header.html'"></div>
 
-        <div id="content" data-ui-view></div>
+        <div id="content-wrapper">
+            <div data-ui-view></div>
+            <div class="clear"></div>
+        </div>
         <!--<div ng-view></div>-->
 
         <toaster-container
@@ -44,10 +46,10 @@
             <!--<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
             <span class="sr-only">Loading...</span>-->
         </div>
-
-        <div ng-include="'assets/views/common/footer.html'"></div>
-
     </div>
+
+    <div id="footer" ng-include="'assets/views/common/footer.html'"></div>
+
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
