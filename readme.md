@@ -2,7 +2,7 @@
 
 ## 一、简介
 
-Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS、Event Sourcing构建的基于事件源实现的最一致性的微服务架构的在线购物网站。
+Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS、Event Sourcing构建的基于事件源实现的最终一致性的微服务架构的在线购物网站。
 
 #### 微服务优点
 微服务是最近几年很流行的一种架构模式，相比其他架构模式有着诸多优点。如：
@@ -71,7 +71,7 @@ Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring R
 #### 数据库
 微服务架构通常使用多个数据库。业务领域的资源分布在整个微服务架构中，每个微服务有它单独的数据库。开发团队通常根据数据库在解决特定问题时其优势选择合适类型的数据库。
 
-Spring-event-sourcing使用以下数据库类型.
+Microservices-event-sourcing使用以下数据库类型.
 * MySQL - RDBMS
 * Neo4j - GraphDB
 * MongoDB - Document Store
@@ -111,11 +111,11 @@ grant all privileges on time_store_cart.* to 'time'@'::1' identified by '123456'
 flush privileges;
 ```
 
-2、安装neo4j 2.3 并修改默认密码为secret
+2、为inventory-service安装neo4j 2.3，启动neo4j并修改密码为secret
 ``` shell
 curl -v -u neo4j:neo4j -X POST localhost:7474/user/neo4j/password -H "Content-type:application/json" -d "{\"password\":\"secret\"}"
 ```
-3、在 localhost:27017 上启动mongo
+3、为order-service安装mongo。在 localhost:27017上启动mongo
 
 4、依次启动以下微服务
 * Discovery Service
@@ -134,7 +134,7 @@ curl -v -u neo4j:neo4j -X POST localhost:7474/user/neo4j/password -H "Content-ty
 
 当所有服务启动完成后，验证服务已经成功注册到[Eureka](http://localhost:8761)。
 
-如果每个服务成功加载，浏览[在线购物网站](http://localhost:8787)。点击登录，你将被重定向到Oauth2.0授权服务器，即[user-service](http://localhost:8181/auth/login)。用户名是 user，密码是 password。你将被认证和请求允许对在线购物网站进行令牌授权。在完成授权后，你将被重定向到在线购物网站，然后便可以访问来自边缘服务的受保护资源。
+如果每个服务成功加载，浏览[在线购物网站首页](http://localhost:8787)。点击登录，你将被重定向到Oauth2.0授权服务器，即[user-service](http://localhost:8181/auth/login)。用户名是 user，密码是 password。你将被认证和请求允许对在线购物网站进行令牌授权。在完成授权后，你将被重定向到在线购物网站，然后便可以访问来自边缘服务的受保护资源。
 
 ## 三、预览
 * 首页未登录
