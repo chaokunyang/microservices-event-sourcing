@@ -1,8 +1,8 @@
-# Microservices-event-sourcing
+# Microservices Event Sourcing
 
 ## 一、简介
 
-Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS、Event Sourcing构建的基于事件源实现的最终一致性的微服务架构的在线购物网站。
+Microservices Event Sourcing 是一个微服务架构的在线购物平台，使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS 构建，实现了基于Event Sourcing的最终一致性。
 
 #### 微服务优点
 微服务是最近几年很流行的一种架构模式，相比其他架构模式有着诸多优点。如：
@@ -47,9 +47,9 @@ Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring R
 * 健康监测
 * 每个服务一个容器
 
-这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices-event-sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
+这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices Event Sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
 
-#### Microservices-event-sourcing架构
+#### Microservices Event Sourcing架构
 整个系统分为三层：
 * web层：在线商店Web，负责请求和UI
 * backing层：服务发现、边缘服务、配置服务、用户服务、监控服务
@@ -71,7 +71,7 @@ Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring R
 #### 数据库
 微服务架构通常使用多个数据库。业务领域的资源分布在整个微服务架构中，每个微服务有它单独的数据库。开发团队通常根据数据库在解决特定问题时其优势选择合适类型的数据库。
 
-Microservices-event-sourcing使用以下数据库类型.
+Microservices Event Sourcing使用以下数据库类型.
 * MySQL - RDBMS
 * Neo4j - GraphDB
 * MongoDB - Document Store
