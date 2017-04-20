@@ -77,7 +77,7 @@ Microservices-event-sourcing使用以下数据库类型.
 * MongoDB - Document Store
 * Redis - Key/value Store
 
-即使是同种类型的数据库，每个服务也应该使用单独的数据库，这是微服务的基本模式之一，能够避免引起数据库层面的耦合，也易于维护.
+即使是同种类型的数据库，每个服务也应该使用单独的数据库，这是微服务的基本模式之一，能够避免引起数据库层面的耦合，也易于维护、扩展、伸缩.
 
 ## 二、Getting Started
 
