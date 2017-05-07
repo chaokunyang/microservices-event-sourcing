@@ -1,4 +1,4 @@
-rootProject.name = 'spring-event-sourcing'
+rootProject.name = 'microservices-event-sourcing'
 include 'discovery-service'
 include 'user-service'
 include 'edge-service'
