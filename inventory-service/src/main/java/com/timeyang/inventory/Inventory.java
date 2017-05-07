@@ -7,8 +7,10 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 /**
- * 库存<br/>
- * 每个库存代表的产品数量为1。有多少个库存状态为IN_STOCK的库存，就有多少个产品有库存
+ * <h1>库存</h1>
+ * 每个库存代表的数量为1的一个产品。如一个产品有800个库存，在neo4j就有800个inventory节点与该product节点关联<br/>
+ * 一个商品的库存可以位于不同仓库<br/>
+ * 这样设计易于实现幂等性，在完成订单事务失败时，能够更好地返库存。而如果一个库存记录代表多个库存数量，则在并发返库存时会遇到一些问题<br/>
  * @author chaokunyang
  */
 @NodeEntity

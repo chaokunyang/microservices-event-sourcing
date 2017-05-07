@@ -1,8 +1,8 @@
-# Microservices-event-sourcing
+# Microservices Event Sourcing
 
 ## 一、简介
 
-Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS、Event Sourcing构建的基于事件源实现的最一致性的微服务架构的在线购物网站。
+Microservices Event Sourcing 是一个微服务架构的在线购物平台，使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS 构建，实现了基于Event Sourcing的最终一致性。
 
 #### 微服务优点
 微服务是最近几年很流行的一种架构模式，相比其他架构模式有着诸多优点。如：
@@ -47,9 +47,9 @@ Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring R
 * 健康监测
 * 每个服务一个容器
 
-这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices-event-sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
+这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices Event Sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
 
-#### Microservices-event-sourcing架构
+#### Microservices Event Sourcing架构
 整个系统分为三层：
 * web层：在线商店Web，负责请求和UI
 * backing层：服务发现、边缘服务、配置服务、用户服务、监控服务
@@ -71,13 +71,13 @@ Microservices-event-sourcing是一个使用Spring Boot、Spring Cloud、Spring R
 #### 数据库
 微服务架构通常使用多个数据库。业务领域的资源分布在整个微服务架构中，每个微服务有它单独的数据库。开发团队通常根据数据库在解决特定问题时其优势选择合适类型的数据库。
 
-Spring-event-sourcing使用以下数据库类型.
+Microservices Event Sourcing使用以下数据库类型.
 * MySQL - RDBMS
 * Neo4j - GraphDB
 * MongoDB - Document Store
 * Redis - Key/value Store
 
-即使是同种类型的数据库，每个服务也应该使用单独的数据库，这是微服务的基本模式之一，能够避免引起数据库层面的耦合，也易于维护.
+即使是同种类型的数据库，每个服务也应该使用单独的数据库，这是微服务的基本模式之一，能够避免引起数据库层面的耦合，也易于维护、扩展、伸缩.
 
 ## 二、Getting Started
 
@@ -111,11 +111,11 @@ grant all privileges on time_store_cart.* to 'time'@'::1' identified by '123456'
 flush privileges;
 ```
 
-2、安装neo4j 2.3 并修改默认密码为secret
+2、为inventory-service安装neo4j 2.3，启动neo4j并修改密码为secret
 ``` shell
 curl -v -u neo4j:neo4j -X POST localhost:7474/user/neo4j/password -H "Content-type:application/json" -d "{\"password\":\"secret\"}"
 ```
-3、在 localhost:27017 上启动mongo
+3、为order-service安装mongo。在 localhost:27017上启动mongo
 
 4、依次启动以下微服务
 * Discovery Service
@@ -134,7 +134,7 @@ curl -v -u neo4j:neo4j -X POST localhost:7474/user/neo4j/password -H "Content-ty
 
 当所有服务启动完成后，验证服务已经成功注册到[Eureka](http://localhost:8761)。
 
-如果每个服务成功加载，浏览[在线购物网站](http://localhost:8787)。点击登录，你将被重定向到Oauth2.0授权服务器，即[user-service](http://localhost:8181/auth/login)。用户名是 user，密码是 password。你将被认证和请求允许对在线购物网站进行令牌授权。在完成授权后，你将被重定向到在线购物网站，然后便可以访问来自边缘服务的受保护资源。
+如果每个服务成功加载，浏览[在线购物网站首页](http://localhost:8787)。点击登录，你将被重定向到Oauth2.0授权服务器，即[user-service](http://localhost:8181/auth/login)。用户名是 user，密码是 password。你将被认证和请求允许对在线购物网站进行令牌授权。在完成授权后，你将被重定向到在线购物网站，然后便可以访问来自边缘服务的受保护资源。
 
 ## 三、预览
 * 首页未登录
