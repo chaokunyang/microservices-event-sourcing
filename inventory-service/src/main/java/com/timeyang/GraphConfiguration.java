@@ -31,9 +31,6 @@ import java.util.stream.Collectors;
 @EnableTransactionManagement
 public class GraphConfiguration extends Neo4jConfiguration {
 
-    @Autowired
-    private Neo4jProperties properties;
-
     @Bean
     public SessionFactory getSessionFactory() {
         // 指定Neo4j应该扫描哪些包，使用每个包里面的类来指定包扫描路径，以避免脆弱性，类型安全，易于重构
@@ -52,7 +49,6 @@ public class GraphConfiguration extends Neo4jConfiguration {
                         .collect(Collectors.toList())
                         .toArray(new String[packageClasses.length]);
         return new SessionFactory(packageNames);
-        // return new SessionFactory(getConfiguration(), packageNames);
     }
 
     // needed for session in view in web-applications
