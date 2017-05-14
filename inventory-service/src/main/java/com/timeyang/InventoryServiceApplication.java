@@ -23,8 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author chaokunyang
  */
 @SpringBootApplication
-@EnableNeo4jRepositories
-@EnableTransactionManagement
 @EnableConfigurationProperties
 @EnableDiscoveryClient
 @EnableHystrix

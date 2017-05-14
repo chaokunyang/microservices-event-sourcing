@@ -167,3 +167,18 @@ gradle-app.setting
 /**/build/
 
 /log
+account-service/src/test/resources/
+catalog-service/src/test/
+config-repository/
+config-service/src/test/
+discovery-service/src/test/
+edge-service/src/test/
+hystrix-dashboard/src/test/
+inventory-service/src/test/
+online-store-app/src/test/
+order-service/src/main/java/com/timeyang/config/
+order-service/src/test/
+payment-service/src/main/resources/
+payment-service/src/test/
+shopping-cart-service/src/test/resources/
+user-service/src/test/

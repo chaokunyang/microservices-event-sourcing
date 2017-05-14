@@ -16,12 +16,12 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
     group = 'com.timeyang.onlinestore'
-    version = '0.1'
+    version = '1.0.0'
 }
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'spring-boot'
+    apply plugin: 'org.springframework.boot'
     sourceCompatibility = 1.8 // 必须在apply java插件之后
     targetCompatibility = 1.8
     repositories {

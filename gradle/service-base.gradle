@@ -15,7 +15,7 @@ buildscript {
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
-//apply plugin: 'spring-boot'
+//apply plugin: 'org.springframework.boot'
 apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin // applying a plugin by plugin id is not supported in script plugins. You must use the plugin's fully qualified class name.
 sourceCompatibility = 1.8 // 必须在apply java插件之后
 targetCompatibility = 1.8

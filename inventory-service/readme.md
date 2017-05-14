@@ -92,3 +92,40 @@ Allows advanced customizations of the default resources exposed.
 1）http://localhost:${port}/api/     返回所有资源的链接的json表示等
 2)http://localhost:${port}/api/catalogs
 3）http://localhost:${port}/api/products
+
+6、配置文档 http://docs.spring.io/spring-data/data-neo4j/docs/4.1.7.RELEASE/reference/html/#reference_setup
+
+7、不要使用以下方法配置驱动 http://docs.spring.io/spring-data/data-neo4j/docs/4.1.7.RELEASE/reference/html/#reference_setup 
+
+* SDN 4.1 now provides support for connecting to Neo4j using different drivers. As a result, the RemoteServer and InProcessServer classes from previous versions should not be used, and are no longer supported.
+```java
+    // 不要使用
+    /*@Bean
+    public Neo4jServer neo4jServer() {
+        String uri = properties.getUri();
+        String username = properties.getUsername();
+        String password= properties.getPassword();
+        return new RemoteServer(uri, username, password);
+    }*/
+```
+    
+* To configure the Driver programmatically, create a Configuration bean and pass it as the first argument to the SessionFactory constructor in your Spring configuration
+```java
+    // 不要使用
+    /*@Bean
+    public Configuration getConfiguration() {
+        Configuration config = new Configuration();
+        config
+                .driverConfiguration()
+                .setDriverClassName("org.neo4j.ogm.drivers.http.driver.HttpDriver")
+                .setCredentials(properties.getUsername(), properties.getPassword())
+                .setURI(properties.getUri()); // http://user:password@localhost:7474
+        return config;
+    }*/
+```
+
+**文档中推荐第二种方法配置驱动，但实际上并不能使用。初次能够读取配置，但之后url会变为null。暂不知道是spring data neo4j的问题还是neo4j-ogm-http-driver-2.0.6本身的问题。所以目前只使用ogm.properties配置驱动**
+
+8、spring-data-neo4j4.1.2之后，4,2,0之前存在bug:Id must be assignable to Serializable
+https://jira.spring.io/browse/DATAREST-928
+https://jira.spring.io/browse/DATAGRAPH-955

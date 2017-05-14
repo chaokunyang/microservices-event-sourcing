@@ -26,7 +26,8 @@ public class Neo4jProperties {
         Assert.isTrue(this.port > 0, "需要提供端口"); // 基础int默认值为0
 
         if(!StringUtils.hasText(this.uri)) {
-            this.uri = String.format("http://%s:%s", getHost(), getPort());
+            this.uri = String.format("http://%s:%s@%s:%s", // http://user:password@localhost:7474
+                    getUsername(), getPassword(), getHost(), getPort());
         }
         LogFactory.getLog(getClass()).info(String.format("host=%s, port=%s, uri=%s", getHost(), getPort(), getUri()));
     }

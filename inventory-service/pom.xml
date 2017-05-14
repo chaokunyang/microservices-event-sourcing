@@ -17,17 +17,18 @@
     </parent>
 
     <properties>
-        <!-- 由于spring-boot并没有管理该依赖(只管理了spring-boot-starter-data-neo4j依赖)，所以仍需在依赖配置里面声明具体版本 -->
-        <spring-data-neo4j.version>4.0.0.RELEASE</spring-data-neo4j.version>
+        <!--避免spring-data-neo4j4.1.2之后，4,2,0之前的bug:Id must be assignable to Serializable-->
+        <!-- 由于spring-boot并没有管理该依赖(只管理了spring-boot-starter-data-neo4j依赖)，所以需在依赖配置里面声明具体版本 -->
+        <spring-data-neo4j.version>4.1.2.RELEASE</spring-data-neo4j.version>
     </properties>
 
     <dependencies>
         <!-- 要保持spring-data-commons、spring-data-neo4j、spring-data-rest三者的版本兼容，具体参考inventory-service/build.gradle文件 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
             <version>1.11.0.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>

@@ -7,15 +7,17 @@ import com.timeyang.inventory.InventoryRepository;
 import com.timeyang.product.ProductRepository;
 import com.timeyang.shipment.ShipmentRepository;
 import com.timeyang.warehouse.WarehouseRepository;
+import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
-import org.springframework.data.neo4j.server.Neo4jServer;
-import org.springframework.data.neo4j.server.RemoteServer;
-import org.springframework.util.StringUtils;
+import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -24,21 +26,13 @@ import java.util.stream.Collectors;
  * neo4j配置
  * @author chaokunyang
  */
-@Configuration
+@Component
+@EnableNeo4jRepositories
+@EnableTransactionManagement
 public class GraphConfiguration extends Neo4jConfiguration {
 
     @Autowired
     private Neo4jProperties properties;
-
-    @Bean
-    public Neo4jServer neo4jServer() {
-        String uri = properties.getUri();
-        String username = properties.getUsername();
-        String password= properties.getPassword();
-        if(StringUtils.hasText(username) && StringUtils.hasText(username))
-            return new RemoteServer(uri, username, password);
-        return new RemoteServer(uri);
-    }
 
     @Bean
     public SessionFactory getSessionFactory() {
@@ -58,9 +52,12 @@ public class GraphConfiguration extends Neo4jConfiguration {
                         .collect(Collectors.toList())
                         .toArray(new String[packageClasses.length]);
         return new SessionFactory(packageNames);
+        // return new SessionFactory(getConfiguration(), packageNames);
     }
 
+    // needed for session in view in web-applications
     @Bean
+    @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
     public Session getSession() throws Exception {
         return super.getSession();
     }
