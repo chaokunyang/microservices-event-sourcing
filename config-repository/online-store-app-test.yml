@@ -1,0 +1,32 @@
+# 仅做演示，具体配置需根据测试环境而定
+zuul:
+  ignored-services: '*'
+  routes:
+    edge-service:
+      path: /api/**
+      url: http://test-server:9999
+    auth-service:
+      path: /user/**
+      url: http://test-server:8181/auth/user
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://test-server:8181/auth/user
+    client:
+      clientId: timeyang
+      clientSecret: timeyangsecret
+      accessTokenUri: http://test-server:8181/auth/oauth/token
+      userAuthorizationUri: http://test-server:8181/auth/oauth/authorize
+eureka:
+  instance:
+    non-secure-port: ${server.port}
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://test-server:8761/eureka/
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 12000
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 5000

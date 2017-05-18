@@ -1,0 +1,5 @@
+# 仅做演示，产品环境的配置需要根据实际情况具体决定
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 12000
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 5000

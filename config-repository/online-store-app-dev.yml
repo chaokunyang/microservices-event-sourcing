@@ -1,0 +1,4 @@
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 120000
+ribbon:
+  ConnectTimeout: 6000
+  ReadTimeout: 120000
