@@ -7,5 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/chaokunyang/spring-event-sourcing.git
+          uri: https://github.com/chaokunyang/microservices-event-sourcing.git
         searchPaths: config-repository

@@ -2,7 +2,7 @@
 
 ## 一、简介
 
-Microservices Event Sourcing 是一个微服务架构的在线购物平台，使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS 构建，实现了基于Event Sourcing的最终一致性。
+Microservices Event Sourcing 是一个微服务架构的在线购物平台，使用Spring Boot、Spring Cloud、Spring Reactor、OAuth2、CQRS 构建，实现了基于Event Sourcing的最终一致性，提供了构建端到端微服务的最佳实践。
 
 #### 微服务优点
 微服务是最近几年很流行的一种架构模式，相比其他架构模式有着诸多优点。如：
@@ -47,7 +47,7 @@ Microservices Event Sourcing 是一个微服务架构的在线购物平台，使
 * 健康监测
 * 每个服务一个容器
 
-这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices Event Sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
+这些微服务模式中的大多数都已经被Spring Cloud(套件)所实现，且开箱即用。但有一些需要经过一番努力才能够实现，如基于事件源实现最终一致性，命令查询职责分离(CQRS)，消息驱动的微服务。而这些模式对于微服务能否成功落地至关重要。因此，[Microservices Event Sourcing](https://github.com/chaokunyang/microservices-event-sourcing)项目在提供构建端到端微服务的最佳实践的同时，主要关注于基于事件源实现最终一致性。我将在接下来分别构建基于CQRS的微服务，和消息驱动的微服务。
 
 #### Microservices Event Sourcing架构
 整个系统分为三层：
